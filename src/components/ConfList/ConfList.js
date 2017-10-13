@@ -101,6 +101,7 @@ class ConfList extends React.Component {
     return (
       <BootstrapTable
         data={this.state.confs}
+        options={this.options}
         ref="table"
         containerClass={s.confTable}
         condensed bordered={ false }

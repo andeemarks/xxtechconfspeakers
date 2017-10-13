@@ -33,11 +33,24 @@
     "postcss-color-rebeccapurple": "^1.1.0",
     "postcss-loader": "^0.4.3",
     "raw-loader": "^0.5.1",
-    "react": "^0.13.3",
-    "react-to-html-webpack-plugin": "^2.2.0",
+    "react": "15.4.0",
+    "react-bootstrap-table": "^3.1.1",
+    "react-dom": "15.4.0",
+    "static-site-generator-webpack-plugin": "^3.4.1",
     "style-loader": "^0.12.3",
     "url-loader": "^0.5.6",
     "webpack": "^1.9.10",
-    "webpack-dev-server": "^1.9.0"
+    "webpack-dev-server": "^1.9.0",
+    "webpack-watch-time-plugin": "^0.1.2"
+  },
+  "dependencies": {
+    "front-matter": "^2.1.0",
+    "highlight.js": "^9.5.0",
+    "json-loader": "^0.5.4",
+    "markdown-it": "^7.0.0",
+    "numbro": "^1.11.0",
+    "react-mdl": "^1.10.3",
+    "react-router": "^4.2.0",
+    "underscore": "^1.8.3"
   }
 }

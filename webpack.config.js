@@ -1,13 +1,19 @@
 var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var ReactToHtmlPlugin = require('react-to-html-webpack-plugin');
+var WatchTimePlugin = require('webpack-watch-time-plugin');
+var StaticSiteGeneratorPlugin = require('static-site-generator-webpack-plugin');
 
 var path = require('path');
 var ejs = require('ejs');
 var fs = require('fs');
+var data = require('./data')
 
 module.exports = {
-  entry: './src/index.js',
+  entry: [
+    // '!!style!css!react-mdl/extra/material.min.css',
+    // 'react-mdl/extra/material.min.js',
+    './src/index.js',
+    ],
 
   output: {
     filename: 'index.js',
@@ -17,9 +23,11 @@ module.exports = {
 
   module: {
     loaders: [
+      { test: /\.md$/, loader: path.resolve(__dirname, './utils/markdown-loader.js'), },
       { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ },
       { test: /\.css$/, loader: ExtractTextPlugin.extract('style-loader', 'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss-loader') },
-      { test: /\.svg$/, loader: "url-loader?limit=10000&mimetype=image/svg+xml" }
+      { test: /\.svg$/, loader: "url-loader?limit=10000&mimetype=image/svg+xml" },
+      { test: /\.json$/, exclude: [path.resolve(__dirname, './routes.json'), ], loader: 'json-loader', }
     ]
   },
 
@@ -33,10 +41,8 @@ module.exports = {
   },
 
   plugins: [
+    WatchTimePlugin,
     new ExtractTextPlugin('style.css', { allChunks: true }),
-    new ReactToHtmlPlugin('index.html', 'index.js', {
-      static: true,
-      template: ejs.compile(fs.readFileSync(__dirname + '/src/template.ejs', 'utf-8'))
-    })
+    new StaticSiteGeneratorPlugin('index.js', data.routes, data)
   ]
 };
