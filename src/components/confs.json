@@ -1,5 +1,32 @@
 [
   {
+    "name":"Buzz Conf",
+    "location":"Ballan, Victoria, Australia",
+    "year":"2017",
+    "totalSpeakers":22,
+    "numberOfWomen":7,
+    "source":"https://buzzconf.io/speakers/",
+    "Notes":"Excluded companies from counts"
+  },
+  {
+    "name":"Buzz Conf",
+    "location":"Ballan, Victoria, Australia",
+    "year":"2016",
+    "totalSpeakers":24,
+    "numberOfWomen":10,
+    "source":"https://archive.buzzconf.io/festival-2016/",
+    "Notes":"Excluded companies from counts"
+  },
+  {
+    "name":"Buzz Conf",
+    "location":"Ballan, Victoria, Australia",
+    "year":"2015",
+    "totalSpeakers":24,
+    "numberOfWomen":6,
+    "source":"https://archive.buzzconf.io/festival-2015/",
+    "Notes":"Excluded companies from counts"
+  },
+  {
     "name":"Compose Conference",
     "location":"Melbourne, Australia",
     "year":"2016",
