@@ -9,6 +9,5 @@ deploy:
   bucket: xxtechconfspeakers.org
   local-dir: dist
   upload-dir: preview
-  acl: ''
   on:
     repo: andeemarks/xxtechconfspeakers
