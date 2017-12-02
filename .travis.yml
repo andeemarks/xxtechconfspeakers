@@ -9,5 +9,6 @@ deploy:
   bucket: xxtechconfspeakers.org
   local-dir: dist
   upload-dir: preview
+  skip_cleanup: true
   on:
     repo: andeemarks/xxtechconfspeakers
