@@ -583,5 +583,14 @@
     "numberOfWomen":7,
     "source":"https://2018.jsconfau.com/speakers",
     "Notes":""
+  },
+  {
+    "name":"CSS Conf Melbourne",
+    "location":"Melbourne, Australia",
+    "year":"2018",
+    "totalSpeakers":9,
+    "numberOfWomen":6,
+    "source":"https://2018.cssconf.com.au/speakers",
+    "Notes":""
   }
 ]
