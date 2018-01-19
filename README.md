@@ -1,5 +1,7 @@
 # http://xxtechconfspeakers.org
 
+[![Build Status](https://travis-ci.org/andeemarks/xxtechconfspeakers.svg?branch=master)](https://travis-ci.org/andeemarks/xxtechconfspeakers)
+
 ## Adding more conferences
 
 Find a good spot in ```src/components/confs.json```
