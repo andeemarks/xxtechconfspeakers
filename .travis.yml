@@ -12,7 +12,7 @@ stages:
 jobs:
   include:
     - stage: test
-      script: skip
+      script: npm test
       deploy:
         provider: s3
         access_key_id: AKIAITYEJ7M6VTSDZHLA
