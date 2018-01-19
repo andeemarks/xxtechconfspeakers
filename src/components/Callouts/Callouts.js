@@ -32,6 +32,7 @@ class Callouts extends React.Component {
     super(props);
 
     this.currentYearConfs = props.confs.filter(confFromCurrentYear);
+    this.currentYear = (new Date()).getFullYear();
 
     this.state = {
       confs: props.confs,
@@ -68,7 +69,7 @@ class Callouts extends React.Component {
             <div className={s.pop}>{numbro(this.state.averageDiversity).format('0')}%</div>
           </div>
           <div className="col-sm-2">
-            <div className={s.title}>Average<br/>f:m% (2017)</div>
+            <div className={s.title}>Average<br/>f:m% ({this.currentYear})</div>
             <div className={s.pop}>{numbro(this.state.averageDiversityCurrentYear).format('0')}%</div>
           </div>
         </div>
