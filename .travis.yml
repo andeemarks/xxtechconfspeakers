@@ -13,7 +13,7 @@ jobs:
   include:
     - stage: test
       script: npm test
-    - stage: deploy
+    - stage: deploy to preview
       script: npm run build
       deploy:
         provider: s3
