@@ -29,6 +29,7 @@
   },
   "dependencies": {
     "ajv": "^6.0.1",
+    "ajv-cli": "^3.0.0",
     "autoprefixer-core": "^5.1.11",
     "babel-loader": "^5.0.0",
     "css-loader": "^0.15.1",

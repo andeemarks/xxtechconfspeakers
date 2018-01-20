@@ -13,6 +13,8 @@ jobs:
   include:
     - stage: test
       script: npm test
+    - stage: validate data
+      script: ajv validate -s ./src/components/confs-schema.json -d ./src/components/confs.json
     - stage: preview deploy
       script: npm run build
       deploy:
