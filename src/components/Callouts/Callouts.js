@@ -1,6 +1,6 @@
 import s from './Callouts.css';
 import React, { PropTypes } from 'react';
-import numbro from 'numbro';
+import numeral from 'numeral';
 
 function diversityAtParityOrGreater(conf) {
   return conf.diversityPercentage >= .50;
@@ -66,7 +66,7 @@ class Callouts extends React.Component {
           </div>
           <div className="col-sm-3">
             <div className={s.title}>Best performer</div>
-            <div className={s.body}><strong>{this.state.bestPerformer.name} ({this.state.bestPerformer.year})</strong><br/>{numbro(this.state.bestPerformer.diversityPercentage).format('0.0%')}</div>
+            <div className={s.body}><strong>{this.state.bestPerformer.name} ({this.state.bestPerformer.year})</strong><br/>{numeral(this.state.bestPerformer.diversityPercentage).format('0%')}</div>
           </div>
           <div className="col-sm-3">
             <div className={s.title}>Biggest recent improver</div>
@@ -80,15 +80,15 @@ class Callouts extends React.Component {
         <div className="row">
           <div className="col-sm-3">
             <div className={s.title}>Average f:m%</div>
-            <div className={s.pop}>{numbro(this.state.averageDiversity).format('0.0%')}</div>
+            <div className={s.pop}>{numeral(this.state.averageDiversity).format('0%')}</div>
           </div>
           <div className="col-sm-3">
             <div className={s.title}>Average f:m% ({this.currentYear})</div>
-            <div className={s.pop}>{numbro(this.state.averageDiversityCurrentYear).format('0.0%')}</div>
+            <div className={s.pop}>{numeral(this.state.averageDiversityCurrentYear).format('0%')}</div>
           </div>
           <div className="col-sm-3">
             <div className={s.title}>Last added</div>
-            <div className={s.body}><strong>{this.state.lastAdded.name} ({this.state.lastAdded.year})</strong><br />{numbro(this.state.lastAdded.diversityPercentage).format('0.0%')}</div>
+            <div className={s.body}><strong>{this.state.lastAdded.name} ({this.state.lastAdded.year})</strong><br />{numeral(this.state.lastAdded.diversityPercentage).format('0%')}</div>
           </div>
         </div>
       </div>

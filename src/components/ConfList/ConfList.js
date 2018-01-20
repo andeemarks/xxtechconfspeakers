@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import s from './ConfList.css'
 import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';
 import _ from 'underscore';
-import numbro from 'numbro';
+import numeral from 'numeral';
 
 function whoFormatter(cell, row) {
   return `${cell} (${row.year}) <a href='${row.source}' target='_other'><span style='font-size: 10px' class='glyphicon glyphicon-link'></span></a>`;
@@ -29,7 +29,7 @@ function numberOfMenFormatter(cell, row) {
 }
 
 function genderDiversityFormatter(cell, row) {
-  return numbro(cell).format('0.0%')
+  return numeral(cell).format('0%')
 }
 
 function genderDiversityRowStyle(row, rowIndex) {
@@ -67,7 +67,7 @@ function genderDiversityCellStyle(percentage, row, rowIndex, columnIndex) {
 }
 
 function rowIndexFormatter(cell, row, formatExtraData, rowIdx) {
-  return (rowIdx + 1);
+  return numeral(rowIdx + 1).format('0')
 }
 
 class ConfList extends React.Component {
@@ -106,7 +106,7 @@ class ConfList extends React.Component {
           dataFormat={ rowIndexFormatter }
           dataAlign='center'
           headerAlign='center'
-          width='30'></TableHeaderColumn>
+          width='40'></TableHeaderColumn>
         <TableHeaderColumn
           isKey
           tdAttr={ { 'id': `${s.confTableRow}` } }
@@ -152,18 +152,6 @@ class ConfList extends React.Component {
           dataField='location'
           tdAttr={ { 'id': `${s.confTableRow}` } }
           >where</TableHeaderColumn>
-        <TableHeaderColumn
-          dataField='history'
-          dataFormat={ minDiversityFormatter }
-          headerAlign='right'
-          dataAlign='right'
-          tdAttr={ { 'id': `${s.confTableRow}` } }
-          >min</TableHeaderColumn>
-        <TableHeaderColumn
-          dataField='history'
-          dataFormat={ maxDiversityFormatter }
-          tdAttr={ { 'id': `${s.confTableRow}` } }
-          >max</TableHeaderColumn>
       </BootstrapTable>
     );
   }
