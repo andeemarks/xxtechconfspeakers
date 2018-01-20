@@ -21,8 +21,8 @@
   },
   "homepage": "https://github.com/andeemarks/xxtechconfspeakers",
   "devDependencies": {
-    "file-loader": "^0.8.4",
-    "node-libs-browser": "^0.5.0",
+    "file-loader": "^1.1.6",
+    "node-libs-browser": "^2.1.0",
     "raw-loader": "^0.5.1",
     "url-loader": "^0.6.2"
   },
