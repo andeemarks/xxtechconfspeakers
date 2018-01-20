@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react';
 import s from './ConfList.css'
 import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';
 import _ from 'underscore';
+import numbro from 'numbro';
 
 function whoFormatter(cell, row) {
   return `${cell} (${row.year}) <a href='${row.source}' target='_other'><span style='font-size: 10px' class='glyphicon glyphicon-link'></span></a>`;
@@ -28,27 +29,20 @@ function numberOfMenFormatter(cell, row) {
 }
 
 function genderDiversityFormatter(cell, row) {
-  var formatter = new Intl.NumberFormat('en-US', {
-    style: 'decimal',
-    minimumIntegerDigits: 2,
-    maximumIntegerDigits: 2,
-    maximumFractionDigits: 0,
-  });
-
-  return `${formatter.format(cell)}%`;
+  return numbro(cell).format('0%')
 }
 
 function genderDiversityRowStyle(row, rowIndex) {
   var percentage = row.diversityPercentage;
-  if (percentage < 10) {
+  if (percentage < .10) {
     return `${s.percentageCohortFTrans}`;
-  } else if (percentage < 20) {
+  } else if (percentage < .20) {
     return `${s.percentageCohortETrans}`;
-  } else if (percentage < 30) {
+  } else if (percentage < .30) {
     return `${s.percentageCohortDTrans}`;
-  } else if (percentage < 40) {
+  } else if (percentage < .40) {
     return `${s.percentageCohortCTrans}`;
-  } else if (percentage < 50) {
+  } else if (percentage < .50) {
     return `${s.percentageCohortBTrans}`;
   } else {
     return `${s.percentageCohortATrans}`;
@@ -56,15 +50,15 @@ function genderDiversityRowStyle(row, rowIndex) {
 }
 
 function genderDiversityCellStyle(percentage, row, rowIndex, columnIndex) {
-  if (percentage < 10) {
+  if (percentage < .10) {
     return `${s.percentageCohortF}`;
-  } else if (percentage < 20) {
+  } else if (percentage < .20) {
     return `${s.percentageCohortE}`;
-  } else if (percentage < 30) {
+  } else if (percentage < .30) {
     return `${s.percentageCohortD}`;
-  } else if (percentage < 40) {
+  } else if (percentage < .40) {
     return `${s.percentageCohortC}`;
-  } else if (percentage < 50) {
+  } else if (percentage < .50) {
     return `${s.percentageCohortB}`;
   } else {
     return `${s.percentageCohortA}`;

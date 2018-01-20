@@ -39,7 +39,7 @@ export default class App extends Component {
   augmentConfData() {
     for (var i = 0; i < confs.length; i += 1) {
       confs[i]['numberOfMen'] = confs[i].totalSpeakers - confs[i].numberOfWomen;
-      confs[i]['diversityPercentage'] = confs[i].numberOfWomen / confs[i].totalSpeakers * 100
+      confs[i]['diversityPercentage'] = confs[i].numberOfWomen / confs[i].totalSpeakers
     }
 
     // add historical diversity for conference
