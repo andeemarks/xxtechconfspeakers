@@ -8,13 +8,21 @@ import Callouts from './Callouts';
 import Footer from './Footer';
 import ConfList from './ConfList';
 import confs from './confs.json';
+import confsSchema from './confs-schema.json';
 import _ from 'underscore';
 import { title, html } from './index.md';
+
+var Ajv = require('ajv');
 
 export default class App extends Component {
 
   constructor(props) {
     super(props);
+
+    var ajv = new Ajv();
+    ajv.addMetaSchema(require('ajv/lib/refs/json-schema-draft-06.json'));
+    var isSchemaValid = ajv.validate(confsSchema, confs);
+    if (!isSchemaValid) console.log(ajv.errorsText());
 
     this.options = {};
     this.state = {confs:this.augmentConfData()};
