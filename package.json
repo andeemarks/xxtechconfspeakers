@@ -20,11 +20,7 @@
     "url": "https://github.com/andeemarks/xxtechconfspeakers/issues"
   },
   "homepage": "https://github.com/andeemarks/xxtechconfspeakers",
-  "devDependencies": {
-    "file-loader": "^1.1.6",
-    "node-libs-browser": "^2.1.0",
-    "url-loader": "^0.6.2"
-  },
+  "devDependencies": {},
   "dependencies": {
     "ajv": "^6.0.1",
     "ajv-cli": "^3.0.0",
