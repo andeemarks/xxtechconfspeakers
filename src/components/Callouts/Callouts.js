@@ -66,7 +66,7 @@ class Callouts extends React.Component {
           </div>
           <div className="col-sm-3">
             <div className={s.title}>Best performer</div>
-            <div className={s.body}><strong>{this.state.bestPerformer.name} ({this.state.bestPerformer.year})</strong><br/>{numbro(this.state.bestPerformer.diversityPercentage).format('0')}%</div>
+            <div className={s.body}><strong>{this.state.bestPerformer.name} ({this.state.bestPerformer.year})</strong><br/>{numbro(this.state.bestPerformer.diversityPercentage).format()}%</div>
           </div>
           <div className="col-sm-3">
             <div className={s.title}>Biggest recent improver</div>
