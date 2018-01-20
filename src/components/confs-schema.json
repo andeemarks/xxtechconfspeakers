@@ -17,6 +17,7 @@
       },
       "year": {
         "type": "string",
+        "pattern": "^2[0-9]{3}$",
         "description": "An explanation about the purpose of this instance."
       },
       "totalSpeakers": {
