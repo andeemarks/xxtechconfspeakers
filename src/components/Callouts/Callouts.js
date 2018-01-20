@@ -88,7 +88,7 @@ class Callouts extends React.Component {
           </div>
           <div className="col-sm-3">
             <div className={s.title}>Last added</div>
-            <div className={s.body}>{this.state.lastAdded.name} ({this.state.lastAdded.year})</div>
+            <div className={s.body}><strong>{this.state.lastAdded.name} ({this.state.lastAdded.year})</strong><br />{numbro(this.state.lastAdded.diversityPercentage).format('0')}%</div>
           </div>
         </div>
       </div>
