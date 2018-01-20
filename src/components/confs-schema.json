@@ -35,7 +35,8 @@
       },
       "dateAdded": {
         "type": "string",
-        "description": "An explanation about the purpose of this instance."
+        "description": "An explanation about the purpose of this instance.",
+        "pattern": "^2[0-9]{3}-[0-9]{2}-[0-9]{2}$"
       },
       "Notes": {
         "type": "string",
