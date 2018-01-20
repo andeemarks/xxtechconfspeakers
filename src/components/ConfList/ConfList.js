@@ -29,7 +29,7 @@ function numberOfMenFormatter(cell, row) {
 }
 
 function genderDiversityFormatter(cell, row) {
-  return numbro(cell).format('0%')
+  return numbro(cell).format('0.0%')
 }
 
 function genderDiversityRowStyle(row, rowIndex) {
