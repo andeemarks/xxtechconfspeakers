@@ -25,6 +25,17 @@ function diversitySorter(confA, confB) {
   return 0;
 }
 
+function dateAddedSorter(confA, confB) {
+  if (confA.dateAdded < confB.dateAdded) {
+    return 1;
+  }
+  if (confA.dateAdded > confB.dateAdded) {
+    return -1;
+  }
+
+  return 0;
+}
+
 class Callouts extends React.Component {
 
 
@@ -37,6 +48,7 @@ class Callouts extends React.Component {
     this.state = {
       confs: props.confs,
       bestPerformer: props.confs.sort(diversitySorter)[0],
+      lastAdded: props.confs.sort(dateAddedSorter)[0],
       numberOfConfs: props.confs.length,
       numberOfConfsAtParityOrGreater: props.confs.filter(diversityAtParityOrGreater).length,
       averageDiversity: props.confs.reduce(diversityAccumulator, 0) / props.confs.length,
@@ -48,29 +60,35 @@ class Callouts extends React.Component {
     return (
       <div className={s.container}>
         <div className="row">
-          <div className="col-sm-2">
-            <div className={s.title}>Conferences<br/>tracked</div>
+          <div className="col-sm-3">
+            <div className={s.title}>Conferences tracked</div>
             <div className={s.pop}>{this.state.numberOfConfs}</div>
           </div>
-          <div className="col-sm-2">
-            <div className={s.title}>Best<br/>performer</div>
+          <div className="col-sm-3">
+            <div className={s.title}>Best performer</div>
             <div className={s.body}><strong>{this.state.bestPerformer.name} ({this.state.bestPerformer.year})</strong><br/>{numbro(this.state.bestPerformer.diversityPercentage).format('0')}%</div>
           </div>
-          <div className="col-sm-2">
+          <div className="col-sm-3">
             <div className={s.title}>Biggest recent improver</div>
             <div className={s.body}><strong>1st Conf</strong><br/>+36%<br/>2016 -> 2017</div>
           </div>
-          <div className="col-sm-2" id={s.nbrConfAtParity}>
-            <div className={s.title}>#confs >= 50%<br/>diversity</div>
+          <div className="col-sm-3" id={s.nbrConfAtParity}>
+            <div className={s.title}>#confs >= 50% diversity</div>
             <div className={s.pop}>{this.state.numberOfConfsAtParityOrGreater}</div>
           </div>
-          <div className="col-sm-2">
-            <div className={s.title}>Average<br/>f:m%</div>
+        </div>
+        <div className="row">
+          <div className="col-sm-3">
+            <div className={s.title}>Average f:m%</div>
             <div className={s.pop}>{numbro(this.state.averageDiversity).format('0')}%</div>
           </div>
-          <div className="col-sm-2">
-            <div className={s.title}>Average<br/>f:m% ({this.currentYear})</div>
+          <div className="col-sm-3">
+            <div className={s.title}>Average f:m% ({this.currentYear})</div>
             <div className={s.pop}>{numbro(this.state.averageDiversityCurrentYear).format('0')}%</div>
+          </div>
+          <div className="col-sm-3">
+            <div className={s.title}>Last added</div>
+            <div className={s.body}>{this.state.lastAdded.name} ({this.state.lastAdded.year})</div>
           </div>
         </div>
       </div>
