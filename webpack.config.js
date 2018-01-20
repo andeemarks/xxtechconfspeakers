@@ -10,8 +10,6 @@ var data = require('./data')
 
 module.exports = {
   entry: [
-    // '!!style!css!react-mdl/extra/material.min.css',
-    // 'react-mdl/extra/material.min.js',
     './src/index.js',
     ],
 
