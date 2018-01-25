@@ -4,6 +4,7 @@
   "description": "Website for www.xxtechconfspeakers.org",
   "main": "index.js",
   "scripts": {
+    "lint": "./node_modules/.bin/eslint src/**/*.js",
     "test": "webpack",
     "start": "webpack-dev-server",
     "clean": "rm -rf dist",
