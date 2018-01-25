@@ -1,7 +1,7 @@
 import s from './Legend.css';
-import React, { Component} from 'react';
+import React from 'react';
 
-export default class Legend extends Component {
+export default class Legend extends React.Component {
   render() {
     return (
       <div>

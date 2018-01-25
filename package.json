@@ -20,13 +20,17 @@
     "url": "https://github.com/andeemarks/xxtechconfspeakers/issues"
   },
   "homepage": "https://github.com/andeemarks/xxtechconfspeakers",
-  "devDependencies": {},
+  "devDependencies": {
+    "eslint": "^4.16.0",
+    "eslint-plugin-react": "^7.5.1"
+  },
   "dependencies": {
     "ajv": "^6.0.1",
     "ajv-cli": "^3.0.0",
     "autoprefixer-core": "^5.2.1",
     "babel-core": "^5.8.38",
     "babel-loader": "^5.4.2",
+    "create-react-class": "^15.6.2",
     "css-loader": "^0.28.9",
     "ejs": "^2.3.1",
     "extract-text-webpack-plugin": "^0.8.2",
@@ -37,6 +41,7 @@
     "numeral": "^2.0.6",
     "postcss-color-rebeccapurple": "^1.1.0",
     "postcss-loader": "^0.4.3",
+    "prop-types": "^15.6.0",
     "react": "^16.2.0",
     "react-bootstrap-table": "^4.3.1",
     "react-dom": "^16.2.0",

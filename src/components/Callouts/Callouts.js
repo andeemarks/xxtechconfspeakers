@@ -1,5 +1,6 @@
 import s from './Callouts.css';
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import numeral from 'numeral';
 
 function diversityAtParityOrGreater(conf) {
@@ -70,10 +71,10 @@ class Callouts extends React.Component {
           </div>
           <div className="col-sm-3">
             <div className={s.title}>Biggest recent improver</div>
-            <div className={s.body}><strong>1st Conf</strong><br/>+36%<br/>2016 -> 2017</div>
+            <div className={s.body}><strong>1st Conf</strong><br/>{"+36%"}<br/>{"2016 -> 2017"}</div>
           </div>
           <div className="col-sm-3" id={s.nbrConfAtParity}>
-            <div className={s.title}>#confs >= 50% diversity</div>
+            <div className={s.title}>{"#confs >= 50% diversity"}</div>
             <div className={s.pop}>{this.state.numberOfConfsAtParityOrGreater}</div>
           </div>
         </div>
@@ -96,5 +97,10 @@ class Callouts extends React.Component {
   }
 
 }
+
+
+Callouts.propTypes = {
+  confs: PropTypes.array
+};
 
 export default Callouts;

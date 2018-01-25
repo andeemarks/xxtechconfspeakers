@@ -1,38 +1,18 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import s from './ConfList.css'
 import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';
-import _ from 'underscore';
 import numeral from 'numeral';
 
 function whoFormatter(cell, row) {
   return `${cell} (${row.year}) <a href='${row.source}' target='_other'><span style='font-size: 10px' class='glyphicon glyphicon-link'></span></a>`;
 }
 
-function historyItemFormatter(historyItem) {
-  return genderDiversityFormatter(historyItem.diversityPercentage, "") + " <sup>(" + historyItem.year + ")</sup>";  
-}
-
-function yearExtractor(historyItem) {
-  return historyItem.diversityPercentage;
-}
-
-function minDiversityFormatter(history, row) {
-  return historyItemFormatter(_.min(history, yearExtractor));
-}
-
-function maxDiversityFormatter(history, row) {
-  return historyItemFormatter(_.max(history, yearExtractor));
-}
-
-function numberOfMenFormatter(cell, row) {
-  return row.totalSpeakers - row.numberOfWomen;
-}
-
-function genderDiversityFormatter(cell, row) {
+function genderDiversityFormatter(cell) {
   return numeral(cell).format('0%')
 }
 
-function genderDiversityRowStyle(row, rowIndex) {
+function genderDiversityRowStyle(row) {
   var percentage = row.diversityPercentage;
   if (percentage < .10) {
     return `${s.percentageCohortFTrans}`;
@@ -49,7 +29,7 @@ function genderDiversityRowStyle(row, rowIndex) {
   }
 }
 
-function genderDiversityCellStyle(percentage, row, rowIndex, columnIndex) {
+function genderDiversityCellStyle(percentage) {
   if (percentage < .10) {
     return `${s.percentageCohortF}`;
   } else if (percentage < .20) {
@@ -86,16 +66,11 @@ class ConfList extends React.Component {
     };
   }
 
-  componentDidMount() {
-    this.refs.table.handleSort('desc', 'diversityPercentage');
-  }
-
   render() {
     return (
       <BootstrapTable
         data={this.state.confs}
         options={this.options}
-        ref="table"
         containerClass={s.confTable}
         condensed bordered={ false }
         trClassName={ genderDiversityRowStyle }
@@ -157,5 +132,9 @@ class ConfList extends React.Component {
   }
 
 }
+
+ConfList.propTypes = {
+  confs: PropTypes.array
+};
 
 export default ConfList;

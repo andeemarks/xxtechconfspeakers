@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { html } from './index.md';
 
-export default class Footer extends Component {
+export default class Footer extends React.Component {
   render() {
     return (
       <footer className="mdl-mini-footer" style={{ backgroundColor: '#000000' }}>

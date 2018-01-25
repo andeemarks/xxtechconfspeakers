@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import s from './Header.css';
 
-export default class Header extends Component {
+export default class Header extends React.Component {
 
   componentDidMount() {
     window.componentHandler.upgradeElement(this.root);

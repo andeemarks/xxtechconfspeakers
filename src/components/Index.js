@@ -1,6 +1,7 @@
 var React = require('react')
+var createReactClass = require('create-react-class');
 
-var Index = React.createClass({
+var Index = createReactClass({
   render: function () {
     return (
       <main>
@@ -10,4 +11,4 @@ var Index = React.createClass({
   }
 })
 
-module.exports = Index
+export default Index;

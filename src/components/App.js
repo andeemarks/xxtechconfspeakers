@@ -1,6 +1,7 @@
 import styles from './App.css';
 
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 import Legend from './Legend';
 import Header from './Header';
@@ -14,7 +15,7 @@ import { title, html } from './index.md';
 
 var Ajv = require('ajv');
 
-export default class App extends Component {
+export default class App extends React.Component {
 
   constructor(props) {
     super(props);
@@ -22,19 +23,22 @@ export default class App extends Component {
     var ajv = new Ajv();
     ajv.addMetaSchema(require('ajv/lib/refs/json-schema-draft-06.json'));
     var isSchemaValid = ajv.validate(confsSchema, confs);
-    if (!isSchemaValid) console.log(ajv.errorsText());
+    if (isSchemaValid) {
+      this.state = {confs:this.augmentConfData()};
+    } else {
+      this.state = [];
+    }
 
     this.options = {};
-    this.state = {confs:this.augmentConfData()};
   }
 
-  selectYearAndDiversity(conference, key) { 
+  selectYearAndDiversity(conference) { 
     return _.pick(conference, 'year', 'diversityPercentage'); 
-  };
+  }
 
-  sortByYear(conferences, confName, list) {
+  sortByYear(conferences, confName) {
     return {name: confName, history: _.sortBy(_.map(conferences, this.selectYearAndDiversity), 'year')};
-  };
+  }
 
   augmentConfData() {
     for (var i = 0; i < confs.length; i += 1) {
@@ -46,7 +50,7 @@ export default class App extends Component {
     this.confsByName = _.groupBy(confs, "name");
     this.confsHistory = _.map(this.confsByName, this.sortByYear, this);
 
-    this.confsWithHistory = confs.map(function(currentConf, index, allConfs) {
+    this.confsWithHistory = confs.map(function(currentConf) {
       return Object.assign(currentConf, {history: _.find(this.confsHistory, function(conf) {
         return conf.name == currentConf.name;
       }).history}
@@ -86,4 +90,8 @@ export default class App extends Component {
     );
   }
 
+}
+
+App.propTypes = {
+  title: PropTypes.string
 };
