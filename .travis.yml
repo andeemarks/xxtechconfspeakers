@@ -6,8 +6,8 @@ before_install:
 
 cache:
   directories:
-    - node_modules # NPM packages
-    
+  - node_modules # NPM packages
+
 stages:
   - lint
   - validate data
