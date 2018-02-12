@@ -23,7 +23,8 @@
   "homepage": "https://github.com/andeemarks/xxtechconfspeakers",
   "devDependencies": {
     "eslint": "^4.16.0",
-    "eslint-plugin-react": "^7.5.1"
+    "eslint-plugin-react": "^7.5.1",
+    "jasmine": "^3.0.0"
   },
   "dependencies": {
     "ajv": "^6.0.1",
