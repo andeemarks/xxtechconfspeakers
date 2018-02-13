@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import s from './ConfList.css'
+import s from './ConfList.css';
 import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';
 import ConfListHelper from './ConfListHelper';
 
@@ -118,6 +118,12 @@ class ConfList extends React.Component {
           dataSort={ false }
           tdAttr={ { 'id': `${s.confTableRow}` } }
           >where</TableHeaderColumn>
+        <TableHeaderColumn
+          dataField='dateAdded'
+          dataFormat={ this.helper.dateAddedFormatter }
+          dataSort={ false }
+          tdAttr={ { 'id': `${s.confTableRow}` } }
+          >added</TableHeaderColumn>
       </BootstrapTable>
     );
   }
