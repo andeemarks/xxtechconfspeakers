@@ -242,6 +242,16 @@
   {
     "name":"Webstock",
     "location":"Wellington, New Zealand",
+    "year":"2018",
+    "totalSpeakers":21,
+    "numberOfWomen":11,
+    "source":"https://www.webstock.org.nz/18/all-speakers/",
+    "dateAdded": "2018-02-13",
+    "Notes":""
+  },
+  {
+    "name":"Webstock",
+    "location":"Wellington, New Zealand",
     "year":"2017",
     "totalSpeakers":21,
     "numberOfWomen":11,
