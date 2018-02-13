@@ -52,10 +52,20 @@
   {
     "name":"1st Conf",
     "location":"Melbourne, Australia",
+    "year":"2018",
+    "totalSpeakers":35,
+    "numberOfWomen":15,
+    "source":"http://www.1stconf.com/speakers/",
+    "dateAdded": "2018-02-13",
+    "Notes":""
+  },
+  {
+    "name":"1st Conf",
+    "location":"Melbourne, Australia",
     "year":"2017",
     "totalSpeakers":21,
     "numberOfWomen":12,
-    "source":"http://www.1stconf.com/speakers/",
+    "source":"http://www.1stconf.com/2017/speakers/",
     "dateAdded": "2017-03-27",
     "Notes":""
   },
