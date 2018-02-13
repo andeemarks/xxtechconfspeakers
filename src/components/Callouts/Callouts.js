@@ -23,8 +23,8 @@ class Callouts extends React.Component {
       lastAdded: props.confs.sort(this.helper.dateAddedSorter)[0],
       numberOfConfs: props.confs.length,
       numberOfConfsAtParityOrGreater: props.confs.filter(this.helper.diversityAtParityOrGreater).length,
-      averageDiversity: props.confs.reduce(diversityAccumulator, 0) / props.confs.length,
-      averageDiversityCurrentYear: this.currentYearConfs.reduce(diversityAccumulator, 0) / this.currentYearConfs.length
+      averageDiversity: this.helper.calculateAverageDiversity(props.confs),
+      averageDiversityCurrentYear: this.helper.calculateAverageDiversity(this.currentYearConfs)
     };
   }
 

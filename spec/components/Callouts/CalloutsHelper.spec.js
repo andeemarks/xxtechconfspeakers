@@ -12,9 +12,17 @@ describe("The CalloutsHelper module", function() {
         MockDate.reset();
     });
     
+    it("can calculate the average diversity across a set of conferences", function() {
+      expect(helper.calculateAverageDiversity([{diversityPercentage: 0}, {diversityPercentage: 1}])).toBe(.5);
+      expect(helper.calculateAverageDiversity([{diversityPercentage: .25}, {diversityPercentage: .75}])).toBe(.5);
+      expect(helper.calculateAverageDiversity([{diversityPercentage: .2}, {diversityPercentage: .3}, {diversityPercentage: .4}])).toBe(.3);
+      expect(helper.calculateAverageDiversity([{diversityPercentage: 0}])).toBe(0);
+    });
+
     it("can work out whether a conference is from the current year", function() {
       expect(helper.confFromCurrentYear({year: 2000})).toBe(false);
       expect(helper.confFromCurrentYear({year: 2018})).toBe(true);
+      expect(helper.confFromCurrentYear({})).toBe(false);
     });
     
     it("can work out whether a conference has diversity at parity (or better)", function() {

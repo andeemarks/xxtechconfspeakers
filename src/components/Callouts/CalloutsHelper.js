@@ -12,6 +12,10 @@ class CalloutsHelper {
     return accumulator + conf.diversityPercentage; 
   }
   
+  calculateAverageDiversity(confs) {
+    return confs.reduce(this.diversityAccumulator, 0) / confs.length;
+  }
+
   diversitySorter(confA, confB) {
     if (confA.diversityPercentage < confB.diversityPercentage) {
       return 1;
