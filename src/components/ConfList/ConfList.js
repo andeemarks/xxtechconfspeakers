@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import s from './ConfList.css'
 import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';
-import numeral from 'numeral';
 import ConfListHelper from './ConfListHelper';
 
 class ConfList extends React.Component {
