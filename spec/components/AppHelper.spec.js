@@ -8,9 +8,8 @@ describe("The AppHelper module", function() {
         helper = new AppHelper();
     });
     
-    it("can format the conference name and year", function() {
-        // expect(helper.whoFormatter("Foo", {year: 2016, source: "bar"})).toContain("Foo (2016)");
-        // expect(helper.whoFormatter("Bar", {year: 2017, source: "foo"})).toContain("Bar (2017)");
+    it("can complete the necessary fields", function() {
+        expect(helper.completeMissingFields([{totalSpeakers: 10, numberOfWomen: 3}])).toEqual([{totalSpeakers: 10, numberOfWomen: 3, numberOfMen: 7, diversityPercentage: .3}]);
     });
 
 });

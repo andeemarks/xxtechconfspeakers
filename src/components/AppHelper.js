@@ -1,4 +1,4 @@
-var _ = require('underscore');
+/* global module */
 
 class AppHelper {
   isDataCompliantWithSchema(confs, confsSchema) {
@@ -22,5 +22,6 @@ class AppHelper {
     return this.completeMissingFields(confs);
   }
 }
+
 
 module.exports = AppHelper;
