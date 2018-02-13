@@ -24,6 +24,12 @@ class CalloutsHelper {
     return {diversityPercentageChange: diversityPercentageChange, conf: conf};
   }
 
+  findHighestDiversityChange(confGroup) {
+    var confGroupSortedByDiversityChange = _.sortBy(confGroup, 'diversityPercentageChange');
+    
+    return confGroupSortedByDiversityChange[confGroup.length - 1];
+  }
+
   calculateHistoricalDiversityChanges(confGroup) {
     return _.map(confGroup.reverse(), this.diffDiversityPercentageBetweenYears, this).reverse();     
   }

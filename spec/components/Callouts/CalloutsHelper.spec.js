@@ -14,6 +14,25 @@ describe("The CalloutsHelper module", function() {
         MockDate.reset();
     });
 
+    it("can calculate the highest diversity change over the life of a conference", function() {
+      expect(helper.findHighestDiversityChange([])).toEqual(undefined);
+      expect(helper.findHighestDiversityChange(
+        [
+          { conf: { year: 2011, diversityPercentage: 0.3 }, diversityPercentageChange: 0 }, 
+          { conf: { year: 2013, diversityPercentage: 0.3 }, diversityPercentageChange: .1 }, 
+          { conf: { year: 2014, diversityPercentage: 0.25 }, diversityPercentageChange: -0.05 } ]
+      )).toEqual({ conf: { year: 2013, diversityPercentage: 0.3 }, diversityPercentageChange: .1 });
+    });
+
+    xit("can calculate the highest diversity change favouring more recent confs when change is same", function() {
+      expect(helper.findHighestDiversityChange(
+        [
+          { conf: { year: 2016, diversityPercentage: 0.3 }, diversityPercentageChange: 0.15 }, 
+          { conf: { year: 2013, diversityPercentage: 0.3 }, diversityPercentageChange: .1 }, 
+          { conf: { year: 2014, diversityPercentage: 0.25 }, diversityPercentageChange: 0.15 } ]
+      )).toEqual({ conf: { year: 2016, diversityPercentage: 0.3 }, diversityPercentageChange: .15 });
+    });
+
     it("can group conferences by name", function() {
       expect(helper.groupConferencesByName([])).toEqual({});
       expect(helper.groupConferencesByName([{name: "Foo"}])).toEqual({ Foo: [ { name: 'Foo' } ] });
