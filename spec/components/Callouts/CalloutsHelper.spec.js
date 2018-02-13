@@ -1,3 +1,5 @@
+require('jasmine-collection-matchers');
+
 describe("The CalloutsHelper module", function() {
     var CalloutsHelper = require('../../../src/components/Callouts/CalloutsHelper');
     var MockDate = require('mockdate');
@@ -12,6 +14,20 @@ describe("The CalloutsHelper module", function() {
         MockDate.reset();
     });
     
+    it("can find all conferences with equal parity or greater", function() {
+      expect(helper.findConfsAtParityOrGreater([])).toEqual([]);
+      expect(helper.findConfsAtParityOrGreater([{diversityPercentage: .25}])).toEqual([]);
+      expect(helper.findConfsAtParityOrGreater([{diversityPercentage: .25}, {diversityPercentage: .55}])).toEqual([{diversityPercentage: .55}]);
+      expect(helper.findConfsAtParityOrGreater([{diversityPercentage: .25}, {diversityPercentage: .55}, {diversityPercentage: .5}])).toHaveSameItems([{diversityPercentage: .5}, {diversityPercentage: .55}], true);
+    });
+
+    it("can find the most recently added conference", function() {
+      expect(helper.findMostRecentlyAddedConference([{dateAdded: 2000}, {dateAdded: 2000}])).toEqual({dateAdded: 2000});
+      expect(helper.findMostRecentlyAddedConference([{dateAdded: 2001}, {dateAdded: 2000}])).toEqual({dateAdded: 2001});
+      expect(helper.findMostRecentlyAddedConference([{dateAdded: 2001}, {dateAdded: 2002}])).toEqual({dateAdded: 2002});
+      expect(helper.findMostRecentlyAddedConference([])).toEqual(undefined);
+    });
+
     it("can find the best performing conference", function() {
       expect(helper.findBestPerformingConf([{diversityPercentage: .25}, {diversityPercentage: .75}])).toEqual({diversityPercentage: .75});
       expect(helper.findBestPerformingConf([{diversityPercentage: .75}, {diversityPercentage: .25}])).toEqual({diversityPercentage: .75});

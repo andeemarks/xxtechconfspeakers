@@ -24,6 +24,14 @@ class CalloutsHelper {
     return confs.sort(this.diversitySorter)[0];
   }
 
+  findMostRecentlyAddedConference(confs) {
+    return confs.sort(this.dateAddedSorter)[0];
+  }
+
+  findConfsAtParityOrGreater(confs) {
+    return confs.filter(this.diversityAtParityOrGreater);
+  }
+
   diversitySorter(confA, confB) {
     if (confA.diversityPercentage < confB.diversityPercentage) {
       return 1;
