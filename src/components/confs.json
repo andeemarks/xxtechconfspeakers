@@ -560,6 +560,16 @@
     "Notes":"Not including lightning talks"
   },
   {
+    "name":"RubyConf",
+    "location":"Sydney, Australia",
+    "year":"2018",
+    "totalSpeakers":19,
+    "numberOfWomen":10,
+    "source":"https://rubyconf.org.au/2018/speakers",
+    "dateAdded": "2018-02-13",
+    "Notes":"Not including lightning talks"
+  },
+  {
     "name":"ScaleConf",
     "location":"Wellington, New Zealand",
     "year":"2017",
