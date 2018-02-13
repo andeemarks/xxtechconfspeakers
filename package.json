@@ -23,10 +23,11 @@
   "homepage": "https://github.com/andeemarks/xxtechconfspeakers",
   "devDependencies": {
     "eslint": "^4.16.0",
-    "eslint-plugin-react": "^7.5.1"
+    "eslint-plugin-react": "^7.5.1",
+    "extract-text-webpack-plugin": "^2.1.2"
   },
   "dependencies": {
-    "ajv": "^6.0.1",
+    "ajv": "^6.1.1",
     "ajv-cli": "^3.0.0",
     "autoprefixer-core": "^5.2.1",
     "babel-core": "^5.8.38",
@@ -34,7 +35,6 @@
     "create-react-class": "^15.6.2",
     "css-loader": "^0.28.9",
     "ejs": "^2.3.1",
-    "extract-text-webpack-plugin": "^0.8.2",
     "front-matter": "^2.3.0",
     "highlight.js": "^9.5.0",
     "json-loader": "^0.5.4",
@@ -49,7 +49,7 @@
     "static-site-generator-webpack-plugin": "^3.4.1",
     "style-loader": "^0.19.1",
     "underscore": "^1.8.3",
-    "webpack": "^1.15.0",
+    "webpack": "^2.0.0",
     "webpack-dev-server": "^1.16.5",
     "webpack-watch-time-plugin": "^0.1.2"
   }

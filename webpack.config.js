@@ -20,27 +20,41 @@ module.exports = {
   },
 
   module: {
-    loaders: [
-      { test: /\.md$/, loader: path.resolve(__dirname, './utils/markdown-loader.js'), },
-      { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ },
-      { test: /\.css$/, loader: ExtractTextPlugin.extract('style-loader', 'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss-loader') },
-      { test: /\.svg$/, loader: "url-loader?limit=10000&mimetype=image/svg+xml" },
-      { test: /\.json$/, exclude: [path.resolve(__dirname, './routes.json'), ], loader: 'json-loader', }
-    ]
+    rules: [
+      { 
+        test: /\.md$/, 
+        use: path.resolve(__dirname, './utils/markdown-loader.js'), 
+      },
+      { 
+        test: /\.js$/, 
+        use: 'babel-loader', exclude: /node_modules/ 
+      },
+      { 
+        test: /\.svg$/, 
+        use: "url-loader?limit=10000&mimetype=image/svg+xml" 
+      },
+      {
+        test: /\.css$/,
+        use: ExtractTextPlugin.extract({
+          fallback: "style-loader",
+          use: "css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss-loader"
+        })
+      }
+    ],
+
   },
 
-  postcss: [
-    require('autoprefixer-core'),
-    require('postcss-color-rebeccapurple')
-  ],
+  // postcss: [
+  //   require('autoprefixer-core')
+  // ],
 
   resolve: {
-    modulesDirectories: ['node_modules', 'components']
+    modules: ['node_modules', 'components']
   },
 
   plugins: [
     WatchTimePlugin,
-    new ExtractTextPlugin('style.css', { allChunks: true }),
+    new ExtractTextPlugin('style.css'),
     new StaticSiteGeneratorPlugin('index.js', data.routes, data)
   ]
 };
