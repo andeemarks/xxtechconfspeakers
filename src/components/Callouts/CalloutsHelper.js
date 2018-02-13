@@ -1,5 +1,6 @@
 class CalloutsHelper {
   constructor() { }
+  
   diversityAtParityOrGreater(conf) {
     return conf.diversityPercentage >= .50;
   }

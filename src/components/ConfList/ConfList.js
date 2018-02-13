@@ -3,57 +3,48 @@ import PropTypes from 'prop-types';
 import s from './ConfList.css'
 import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';
 import numeral from 'numeral';
-
-function whoFormatter(cell, row) {
-  return `${cell} (${row.year}) <a href='${row.source}' target='_other'><span style='font-size: 10px' class='glyphicon glyphicon-link'></span></a>`;
-}
-
-function genderDiversityFormatter(cell) {
-  return numeral(cell).format('0%')
-}
-
-function genderDiversityRowStyle(row) {
-  var percentage = row.diversityPercentage;
-  if (percentage < .10) {
-    return `${s.percentageCohortFTrans}`;
-  } else if (percentage < .20) {
-    return `${s.percentageCohortETrans}`;
-  } else if (percentage < .30) {
-    return `${s.percentageCohortDTrans}`;
-  } else if (percentage < .40) {
-    return `${s.percentageCohortCTrans}`;
-  } else if (percentage < .50) {
-    return `${s.percentageCohortBTrans}`;
-  } else {
-    return `${s.percentageCohortATrans}`;
-  }
-}
-
-function genderDiversityCellStyle(percentage) {
-  if (percentage < .10) {
-    return `${s.percentageCohortF}`;
-  } else if (percentage < .20) {
-    return `${s.percentageCohortE}`;
-  } else if (percentage < .30) {
-    return `${s.percentageCohortD}`;
-  } else if (percentage < .40) {
-    return `${s.percentageCohortC}`;
-  } else if (percentage < .50) {
-    return `${s.percentageCohortB}`;
-  } else {
-    return `${s.percentageCohortA}`;
-  }
-
-}
-
-function rowIndexFormatter(cell, row, formatExtraData, rowIdx) {
-  return numeral(rowIdx + 1).format('0')
-}
+import ConfListHelper from './ConfListHelper';
 
 class ConfList extends React.Component {
 
+    genderDiversityRowStyle(row) {
+        var percentage = row.diversityPercentage;
+        if (percentage < .10) {
+            return `${s.percentageCohortFTrans}`;
+        } else if (percentage < .20) {
+            return `${s.percentageCohortETrans}`;
+        } else if (percentage < .30) {
+            return `${s.percentageCohortDTrans}`;
+        } else if (percentage < .40) {
+            return `${s.percentageCohortCTrans}`;
+        } else if (percentage < .50) {
+            return `${s.percentageCohortBTrans}`;
+        } else {
+            return `${s.percentageCohortATrans}`;
+        }
+    }
+
+  genderDiversityCellStyle(percentage) {
+      if (percentage < .10) {
+          return `${s.percentageCohortF}`;
+      } else if (percentage < .20) {
+          return `${s.percentageCohortE}`;
+      } else if (percentage < .30) {
+          return `${s.percentageCohortD}`;
+      } else if (percentage < .40) {
+          return `${s.percentageCohortC}`;
+      } else if (percentage < .50) {
+          return `${s.percentageCohortB}`;
+      } else {
+          return `${s.percentageCohortA}`;
+      }
+
+  }
+
   constructor(props) {
     super(props);
+
+    this.helper = new ConfListHelper();
 
     this.options = {
       defaultSortName: 'diversityPercentage',
@@ -73,12 +64,12 @@ class ConfList extends React.Component {
         options={this.options}
         containerClass={s.confTable}
         condensed bordered={ false }
-        trClassName={ genderDiversityRowStyle }
+        trClassName={ this.genderDiversityRowStyle }
         tableStyle={ { border: "none" }} >
         <TableHeaderColumn
           tdAttr={ { 'id': `${s.confTableRow}` } }
           dataField='diversityPercentage'
-          dataFormat={ rowIndexFormatter }
+          dataFormat={ this.helper.rowIndexFormatter }
           dataAlign='center'
           headerAlign='center'
           width='40'></TableHeaderColumn>
@@ -86,8 +77,8 @@ class ConfList extends React.Component {
           isKey
           tdAttr={ { 'id': `${s.confTableRow}` } }
           dataField='diversityPercentage'
-          columnClassName={ genderDiversityCellStyle }
-          dataFormat={ genderDiversityFormatter }
+          columnClassName={ this.genderDiversityCellStyle }
+          dataFormat={ this.helper.genderDiversityFormatter }
           dataAlign='center'
           dataSort={ true }
           headerAlign='center'
@@ -95,7 +86,7 @@ class ConfList extends React.Component {
         <TableHeaderColumn
           dataField='name'
           tdAttr={ { 'id': `${s.confTableRow}` } }
-          dataFormat={ whoFormatter }
+          dataFormat={ this.helper.whoFormatter }
           dataSort={ true }
           width='220'
           >who</TableHeaderColumn>
