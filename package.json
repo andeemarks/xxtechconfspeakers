@@ -25,7 +25,8 @@
     "eslint": "^4.16.0",
     "eslint-plugin-react": "^7.5.1",
     "extract-text-webpack-plugin": "^2.1.2",
-    "jasmine": "^3.0.0"
+    "jasmine": "^3.0.0",
+    "mockdate": "^2.0.2"
   },
   "dependencies": {
     "ajv": "^6.1.1",

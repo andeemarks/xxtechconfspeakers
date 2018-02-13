@@ -1,10 +1,21 @@
 describe("The CalloutsHelper module", function() {
     var CalloutsHelper = require('../../../src/components/Callouts/CalloutsHelper');
+    var MockDate = require('mockdate');
     var helper;
 
     beforeEach(function() {
         helper = new CalloutsHelper();
-      });
+        MockDate.set('1/1/2018');
+    });
+
+    afterEach(function() {
+        MockDate.reset();
+    });
+    
+    it("can work out whether a conference is from the current year", function() {
+      expect(helper.confFromCurrentYear({year: 2000})).toBe(false);
+      expect(helper.confFromCurrentYear({year: 2018})).toBe(true);
+    });
     
     it("can work out whether a conference has diversity at parity (or better)", function() {
       expect(helper.diversityAtParityOrGreater({})).toBe(false);

@@ -4,10 +4,6 @@ import PropTypes from 'prop-types';
 import numeral from 'numeral';
 import CalloutsHelpers from './CalloutsHelper';
 
-function confFromCurrentYear(conf) {
-  return conf.year == (new Date()).getFullYear();
-}
-
 function diversityAccumulator(accumulator, conf) { 
   return accumulator + conf.diversityPercentage; 
 }
@@ -17,9 +13,9 @@ class Callouts extends React.Component {
   constructor(props) {
     super(props);
 
-    this.currentYearConfs = props.confs.filter(confFromCurrentYear);
-    this.currentYear = (new Date()).getFullYear();
     this.helper = new CalloutsHelpers();
+    this.currentYearConfs = props.confs.filter(this.helper.confFromCurrentYear);
+    this.currentYear = (new Date()).getFullYear();
 
     this.state = {
       confs: props.confs,
