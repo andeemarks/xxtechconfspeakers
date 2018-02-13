@@ -3,12 +3,12 @@ var numeral = require('numeral');
 class ConfListHelper {
     constructor() { }
 
-    whoFormatter(cell, row) {
-        return `${cell} (${row.year}) <a href='${row.source}' target='_other'><span style='font-size: 10px' class='glyphicon glyphicon-link'></span></a>`;
+    whoFormatter(confName, conf) {
+        return `${confName} (${conf.year}) <a href='${conf.source}' target='_other'><span style='font-size: 10px' class='glyphicon glyphicon-link'></span></a>`;
     }
 
-    genderDiversityFormatter(cell) {
-        return numeral(cell).format('0%')
+    genderDiversityFormatter(diversity) {
+        return numeral(diversity).format('0%')
     }
 
     rowIndexFormatter(cell, row, formatExtraData, rowIdx) {
