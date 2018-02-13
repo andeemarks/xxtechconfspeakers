@@ -2,10 +2,7 @@ import s from './Callouts.css';
 import React from 'react';
 import PropTypes from 'prop-types';
 import numeral from 'numeral';
-
-function diversityAtParityOrGreater(conf) {
-  return conf.diversityPercentage >= .50;
-}
+import CalloutsHelpers from './CalloutsHelper';
 
 function confFromCurrentYear(conf) {
   return conf.year == (new Date()).getFullYear();
@@ -15,43 +12,21 @@ function diversityAccumulator(accumulator, conf) {
   return accumulator + conf.diversityPercentage; 
 }
 
-function diversitySorter(confA, confB) {
-  if (confA.diversityPercentage < confB.diversityPercentage) {
-    return 1;
-  }
-  if (confA.diversityPercentage > confB.diversityPercentage) {
-    return -1;
-  }
-
-  return 0;
-}
-
-function dateAddedSorter(confA, confB) {
-  if (confA.dateAdded < confB.dateAdded) {
-    return 1;
-  }
-  if (confA.dateAdded > confB.dateAdded) {
-    return -1;
-  }
-
-  return 0;
-}
-
 class Callouts extends React.Component {
-
 
   constructor(props) {
     super(props);
 
     this.currentYearConfs = props.confs.filter(confFromCurrentYear);
     this.currentYear = (new Date()).getFullYear();
+    this.helper = new CalloutsHelpers();
 
     this.state = {
       confs: props.confs,
-      bestPerformer: props.confs.sort(diversitySorter)[0],
-      lastAdded: props.confs.sort(dateAddedSorter)[0],
+      bestPerformer: props.confs.sort(this.helper.diversitySorter)[0],
+      lastAdded: props.confs.sort(this.helper.dateAddedSorter)[0],
       numberOfConfs: props.confs.length,
-      numberOfConfsAtParityOrGreater: props.confs.filter(diversityAtParityOrGreater).length,
+      numberOfConfsAtParityOrGreater: props.confs.filter(this.helper.diversityAtParityOrGreater).length,
       averageDiversity: props.confs.reduce(diversityAccumulator, 0) / props.confs.length,
       averageDiversityCurrentYear: this.currentYearConfs.reduce(diversityAccumulator, 0) / this.currentYearConfs.length
     };
