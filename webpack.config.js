@@ -37,7 +37,19 @@ module.exports = {
         test: /\.css$/,
         use: ExtractTextPlugin.extract({
           fallback: "style-loader",
-          use: "css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss-loader"
+          use: [
+            {
+                loader: 'css-loader',
+                options: {
+                    modules: true,
+                    localIdentName: '[path][name]_[local]--[hash:base64:8]',
+                },
+            },
+            {
+                loader: 'postcss-loader',
+                options: { plugins: () => [ nested(), autoprefixer(), values] },
+            }
+        ]
         })
       }
     ],
