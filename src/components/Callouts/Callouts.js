@@ -11,7 +11,6 @@ class Callouts extends React.Component {
 
     this.helper = new CalloutsHelpers();
     this.currentYearConfs = props.confs.filter(this.helper.confFromCurrentYear);
-    this.currentYear = (new Date()).getFullYear();
 
     this.state = {
       confs: props.confs,

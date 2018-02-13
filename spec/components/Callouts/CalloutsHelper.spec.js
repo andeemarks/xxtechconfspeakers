@@ -12,6 +12,10 @@ describe("The CalloutsHelper module", function() {
         MockDate.reset();
     });
     
+    it("can separate the conferences for the current year", function() {
+      expect(helper.findConfsForCurrentYear([{year: 2017}, {year: 2018}])).toBe([{year: 2018}]);
+    });
+    
     it("can calculate the average diversity across a set of conferences", function() {
       expect(helper.calculateAverageDiversity([{diversityPercentage: 0}, {diversityPercentage: 1}])).toBe(.5);
       expect(helper.calculateAverageDiversity([{diversityPercentage: .25}, {diversityPercentage: .75}])).toBe(.5);
