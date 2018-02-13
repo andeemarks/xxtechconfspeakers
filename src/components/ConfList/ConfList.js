@@ -67,9 +67,9 @@ class ConfList extends React.Component {
         tableStyle={ { border: "none" }} >
         <TableHeaderColumn
           tdAttr={ { 'id': `${s.confTableRow}` } }
-          dataField='diversityPercentage'
           dataFormat={ this.helper.rowIndexFormatter }
           dataAlign='center'
+          dataSort={ false }
           headerAlign='center'
           width='40'></TableHeaderColumn>
         <TableHeaderColumn
@@ -79,20 +79,20 @@ class ConfList extends React.Component {
           columnClassName={ this.genderDiversityCellStyle }
           dataFormat={ this.helper.genderDiversityFormatter }
           dataAlign='center'
-          dataSort={ true }
+          dataSort={ false }
           headerAlign='center'
           width='50'>f:m</TableHeaderColumn>
         <TableHeaderColumn
           dataField='name'
           tdAttr={ { 'id': `${s.confTableRow}` } }
           dataFormat={ this.helper.whoFormatter }
-          dataSort={ true }
+          dataSort={ false }
           width='220'
           >who</TableHeaderColumn>
         <TableHeaderColumn
           dataField='numberOfWomen'
           tdAttr={ { 'id': `${s.confTableRow}` } }
-          dataSort={ true }
+          dataSort={ false }
           headerAlign='right'
           dataAlign='right'
           width='50'
@@ -100,7 +100,7 @@ class ConfList extends React.Component {
         <TableHeaderColumn
           dataField='numberOfMen'
           tdAttr={ { 'id': `${s.confTableRow}` } }
-          dataSort={ true }
+          dataSort={ false }
           headerAlign='right'
           dataAlign='right'
           width='50'
@@ -108,13 +108,14 @@ class ConfList extends React.Component {
         <TableHeaderColumn
           dataField='year'
           tdAttr={ { 'id': `${s.confTableRow}` } }
-          dataSort={ true }
+          dataSort={ false }
           headerAlign='right'
           dataAlign='right'
           width='60'
           >year</TableHeaderColumn>
         <TableHeaderColumn
           dataField='location'
+          dataSort={ false }
           tdAttr={ { 'id': `${s.confTableRow}` } }
           >where</TableHeaderColumn>
       </BootstrapTable>
