@@ -1,6 +1,43 @@
+var _ = require('underscore');
+
 class CalloutsHelper {
   constructor() { }
   
+  findMostImprovedConference(confs) {
+    
+  }
+
+  groupConferencesByName(confs) {
+    return _.groupBy(confs, "name");;
+  }
+
+  diffDiversityPercentageBetweenYears(conf, index, confGroup) {
+    // console.log(confGroup);
+    // console.log(index);
+    // console.log("|", conf, "|");
+    if (index >= (confGroup.length - 1)) {
+      conf.change = 0;
+    } else {
+      // console.log(confGroup[index + 1]);
+      conf.change = conf.diversityPercentage - confGroup[index + 1].diversityPercentage;
+      conf.change = Math.round(conf.change * 100) / 100;
+    }
+    delete conf.diversityPercentage;
+    return conf;
+  }
+
+  calculateHistoricalDiversityChanges(confGroup) {
+    return _.map(confGroup.reverse(), this.diffDiversityPercentageBetweenYears, this).reverse();     
+  }
+
+  sortByYear(conferences, confName) {
+    return {[confName]: _.sortBy(conferences, 'year')};
+  }
+
+  sortConfGroupByYear(confGroup) {
+    return _.map(confGroup, this.sortByYear, this);;     
+  }
+
   diversityAtParityOrGreater(conf) {
     return conf.diversityPercentage >= .50;
   }

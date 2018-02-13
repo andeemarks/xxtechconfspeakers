@@ -13,7 +13,56 @@ describe("The CalloutsHelper module", function() {
     afterEach(function() {
         MockDate.reset();
     });
-    
+
+    it("can group conferences by name", function() {
+      expect(helper.groupConferencesByName([])).toEqual({});
+      expect(helper.groupConferencesByName([{name: "Foo"}])).toEqual({ Foo: [ { name: 'Foo' } ] });
+      expect(helper.groupConferencesByName([{name: "Foo"}, {name: "Foo"}, {name: "Bar"}])).toEqual({ Foo: [ { name: 'Foo' }, { name: 'Foo' } ], Bar: [{ name: 'Bar' }] });
+    });
+
+    it("can calculate the diversity changes over successive years", function() {
+      expect(helper.calculateHistoricalDiversityChanges(
+        [ 
+          { year: 2011, diversityPercentage: 0.3 }, 
+          { year: 2013, diversityPercentage: 0.4 }, 
+          { year: 2014, diversityPercentage: 0.6 } ]
+        )).toEqual(
+          [ 
+            { year: 2011, change: 0 }, 
+            { year: 2013, change: 0.1 }, 
+            { year: 2014, change: 0.2 } ]
+        );
+      expect(helper.calculateHistoricalDiversityChanges(
+        [ 
+          { year: 2011, diversityPercentage: 0.3 }, 
+          { year: 2013, diversityPercentage: 0.3 }, 
+          { year: 2014, diversityPercentage: 0.25 } ]
+        )).toEqual(
+          [ 
+            { year: 2011, change: 0 }, 
+            { year: 2013, change: 0 }, 
+            { year: 2014, change: -0.05 } ]
+        );
+      expect(helper.calculateHistoricalDiversityChanges(
+        [ 
+          { year: 2011, diversityPercentage: 0.3 } ]
+        )).toEqual(
+          [ 
+            { year: 2011, change: 0 } ]
+        );
+    });
+
+    it("can sort a group of conferences by year", function() {
+      expect(helper.sortConfGroupByYear({ Foo: [ { year: 2014 }, { year: 2011 }, { year: 2013 } ]})).toEqual([{ Foo: [ { year: 2011 }, { year: 2013 }, { year: 2014 } ]}]);
+    })
+
+    xit("can find the most improved conference", function() {
+      expect(helper.findMostImprovedConference([])).toEqual(undefined);
+      expect(helper.findMostImprovedConference([{name: "Foo", diversityPercentage: .25, year: 2015}])).toEqual(undefined);
+      expect(helper.findMostImprovedConference([{name: "Foo", diversityPercentage: .25, year: 2015}, {name: "Foo", diversityPercentage: .55, year: 2016}])).toEqual({name: "Foo", diversityPercentage: .55, year: 2016});
+
+    })
+
     it("can find all conferences with equal parity or greater", function() {
       expect(helper.findConfsAtParityOrGreater([])).toEqual([]);
       expect(helper.findConfsAtParityOrGreater([{diversityPercentage: .25}])).toEqual([]);
