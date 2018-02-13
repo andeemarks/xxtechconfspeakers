@@ -10,54 +10,23 @@ import Footer from './Footer';
 import ConfList from './ConfList';
 import confs from './confs.json';
 import confsSchema from './confs-schema.json';
-import _ from 'underscore';
 import { title, html } from './index.md';
-
-var Ajv = require('ajv');
+import AppHelper from './AppHelper';
 
 export default class App extends React.Component {
 
   constructor(props) {
     super(props);
 
-    var ajv = new Ajv();
-    ajv.addMetaSchema(require('ajv/lib/refs/json-schema-draft-06.json'));
-    var isSchemaValid = ajv.validate(confsSchema, confs);
-    if (isSchemaValid) {
-      this.state = {confs:this.augmentConfData()};
+    this.helper = new AppHelper();
+
+    if (this.helper.isDataCompliantWithSchema(confs, confsSchema)) {
+      this.state = {confs:this.helper.augmentConfData(confs)};
     } else {
       this.state = [];
     }
 
     this.options = {};
-  }
-
-  selectYearAndDiversity(conference) { 
-    return _.pick(conference, 'year', 'diversityPercentage'); 
-  }
-
-  sortByYear(conferences, confName) {
-    return {name: confName, history: _.sortBy(_.map(conferences, this.selectYearAndDiversity), 'year')};
-  }
-
-  augmentConfData() {
-    for (var i = 0; i < confs.length; i += 1) {
-      confs[i]['numberOfMen'] = confs[i].totalSpeakers - confs[i].numberOfWomen;
-      confs[i]['diversityPercentage'] = confs[i].numberOfWomen / confs[i].totalSpeakers
-    }
-
-    // add historical diversity for conference
-    this.confsByName = _.groupBy(confs, "name");
-    this.confsHistory = _.map(this.confsByName, this.sortByYear, this);
-
-    this.confsWithHistory = confs.map(function(currentConf) {
-      return Object.assign(currentConf, {history: _.find(this.confsHistory, function(conf) {
-        return conf.name == currentConf.name;
-      }).history}
-    )}, this);
-
-    // console.log(this.confsWithHistory);
-    return this.confsWithHistory;
   }
 
   render() {
