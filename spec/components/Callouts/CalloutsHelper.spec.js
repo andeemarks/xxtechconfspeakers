@@ -28,10 +28,13 @@ describe("The CalloutsHelper module", function() {
           { year: 2014, diversityPercentage: 0.6 } ]
         )).toEqual(
           [ 
-            { year: 2011, change: 0 }, 
-            { year: 2013, change: 0.1 }, 
-            { year: 2014, change: 0.2 } ]
+            { conf: { year: 2011, diversityPercentage: 0.3 }, diversityPercentageChange: 0 }, 
+            { conf: { year: 2013, diversityPercentage: 0.4 }, diversityPercentageChange: 0.1 }, 
+            { conf: { year: 2014, diversityPercentage: 0.6 }, diversityPercentageChange: 0.2 } ]
         );
+    });
+
+    it("can calculate negative diversity changes over successive years", function() {
       expect(helper.calculateHistoricalDiversityChanges(
         [ 
           { year: 2011, diversityPercentage: 0.3 }, 
@@ -39,16 +42,19 @@ describe("The CalloutsHelper module", function() {
           { year: 2014, diversityPercentage: 0.25 } ]
         )).toEqual(
           [ 
-            { year: 2011, change: 0 }, 
-            { year: 2013, change: 0 }, 
-            { year: 2014, change: -0.05 } ]
+            { conf: { year: 2011, diversityPercentage: 0.3 }, diversityPercentageChange: 0 }, 
+            { conf: { year: 2013, diversityPercentage: 0.3 }, diversityPercentageChange: 0 }, 
+            { conf: { year: 2014, diversityPercentage: 0.25 }, diversityPercentageChange: -0.05 } ]
         );
+    });
+
+    it("can handle calculating the diversity changes over single year", function() {
       expect(helper.calculateHistoricalDiversityChanges(
         [ 
           { year: 2011, diversityPercentage: 0.3 } ]
         )).toEqual(
           [ 
-            { year: 2011, change: 0 } ]
+            { conf: { year: 2011, diversityPercentage: 0.3 }, diversityPercentageChange: 0 } ]
         );
     });
 
