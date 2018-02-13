@@ -20,6 +20,10 @@ class CalloutsHelper {
     return confs.filter(this.confFromCurrentYear);
   }
 
+  findBestPerformingConf(confs) {
+    return confs.sort(this.diversitySorter)[0];
+  }
+
   diversitySorter(confA, confB) {
     if (confA.diversityPercentage < confB.diversityPercentage) {
       return 1;

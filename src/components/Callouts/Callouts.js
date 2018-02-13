@@ -13,7 +13,7 @@ class Callouts extends React.Component {
 
     this.state = {
       confs: props.confs,
-      bestPerformer: props.confs.sort(this.helper.diversitySorter)[0],
+      bestPerformer: this.helper.findBestPerformingConf(props.confs),
       lastAdded: props.confs.sort(this.helper.dateAddedSorter)[0],
       numberOfConfs: props.confs.length,
       numberOfConfsAtParityOrGreater: props.confs.filter(this.helper.diversityAtParityOrGreater).length,

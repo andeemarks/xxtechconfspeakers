@@ -12,6 +12,14 @@ describe("The CalloutsHelper module", function() {
         MockDate.reset();
     });
     
+    it("can find the best performing conference", function() {
+      expect(helper.findBestPerformingConf([{diversityPercentage: .25}, {diversityPercentage: .75}])).toEqual({diversityPercentage: .75});
+      expect(helper.findBestPerformingConf([{diversityPercentage: .75}, {diversityPercentage: .25}])).toEqual({diversityPercentage: .75});
+      expect(helper.findBestPerformingConf([{diversityPercentage: .75}, {diversityPercentage: .75}])).toEqual({diversityPercentage: .75});
+      expect(helper.findBestPerformingConf([{diversityPercentage: .25}])).toEqual({diversityPercentage: .25});
+      expect(helper.findBestPerformingConf([])).toEqual(undefined);
+    });
+
     it("can separate the conferences for the current year", function() {
       expect(helper.findConfsForCurrentYear([{year: 2017}, {year: 2018}])).toEqual([{year: 2018}]);
       expect(helper.findConfsForCurrentYear([{year: 2017}])).toEqual([]);
