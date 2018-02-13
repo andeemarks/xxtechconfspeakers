@@ -4,10 +4,6 @@ import PropTypes from 'prop-types';
 import numeral from 'numeral';
 import CalloutsHelpers from './CalloutsHelper';
 
-function diversityAccumulator(accumulator, conf) { 
-  return accumulator + conf.diversityPercentage; 
-}
-
 class Callouts extends React.Component {
 
   constructor(props) {
