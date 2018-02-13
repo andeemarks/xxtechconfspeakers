@@ -13,7 +13,9 @@ describe("The CalloutsHelper module", function() {
     });
     
     it("can separate the conferences for the current year", function() {
-      expect(helper.findConfsForCurrentYear([{year: 2017}, {year: 2018}])).toBe([{year: 2018}]);
+      expect(helper.findConfsForCurrentYear([{year: 2017}, {year: 2018}])).toEqual([{year: 2018}]);
+      expect(helper.findConfsForCurrentYear([{year: 2017}])).toEqual([]);
+      expect(helper.findConfsForCurrentYear([{year: 2017}, {name: "A", year: 2018}, {name: "B", year: 2018}])).toEqual([{name: "A", year: 2018}, {name: "B", year: 2018}]);
     });
     
     it("can calculate the average diversity across a set of conferences", function() {

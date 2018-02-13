@@ -10,7 +10,6 @@ class Callouts extends React.Component {
     super(props);
 
     this.helper = new CalloutsHelpers();
-    this.currentYearConfs = props.confs.filter(this.helper.confFromCurrentYear);
 
     this.state = {
       confs: props.confs,
@@ -19,7 +18,7 @@ class Callouts extends React.Component {
       numberOfConfs: props.confs.length,
       numberOfConfsAtParityOrGreater: props.confs.filter(this.helper.diversityAtParityOrGreater).length,
       averageDiversity: this.helper.calculateAverageDiversity(props.confs),
-      averageDiversityCurrentYear: this.helper.calculateAverageDiversity(this.currentYearConfs)
+      averageDiversityCurrentYear: this.helper.calculateAverageDiversity(this.helper.findConfsForCurrentYear(props.confs))
     };
   }
 

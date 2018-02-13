@@ -16,6 +16,10 @@ class CalloutsHelper {
     return confs.reduce(this.diversityAccumulator, 0) / confs.length;
   }
 
+  findConfsForCurrentYear(confs) {
+    return confs.filter(this.confFromCurrentYear);
+  }
+
   diversitySorter(confA, confB) {
     if (confA.diversityPercentage < confB.diversityPercentage) {
       return 1;
