@@ -1,4 +1,4 @@
-var numeral = require('numeral');
+import numeral from "numeral";
 
 class ConfListHelper {
     constructor() { }
@@ -16,4 +16,4 @@ class ConfListHelper {
     }
 }
 
-module.exports = ConfListHelper;
+export default ConfListHelper;

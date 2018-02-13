@@ -1,8 +1,6 @@
 var _ = require('underscore');
 
 class AppHelper {
-    constructor() { }
-
   isDataCompliantWithSchema(confs, confsSchema) {
       var Ajv = require('ajv');
       var schemaValidator = new Ajv();
@@ -46,4 +44,4 @@ class AppHelper {
   }
 }
 
-module.exports = AppHelper;
+export default AppHelper;
