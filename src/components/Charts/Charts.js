@@ -11,7 +11,7 @@ class Charts extends React.Component {
     this.helper = new ChartsHelper();
 
     this.state = {
-      data: this.helper.formatDataForPieChart(props.confs)
+      data: this.helper.countConfsByDiversityCohort(props.confs)
     }
   }
 
@@ -35,7 +35,7 @@ class Charts extends React.Component {
             }
           }}
           ></ReactSvgPieChart>
-            <span class="label label-default"># Confs by Diversity Group</span>  
+            <span className="label label-default"># Confs by Diversity Group</span>  
           </div>
         </div>
       </div>
