@@ -20,23 +20,28 @@ describe("The CalloutsHelper module", function() {
         [
           { conf: { year: 2011, diversityPercentage: 0.3 }, diversityPercentageChange: 0 }, 
           { conf: { year: 2013, diversityPercentage: 0.3 }, diversityPercentageChange: .1 }, 
-          { conf: { year: 2014, diversityPercentage: 0.25 }, diversityPercentageChange: -0.05 } ]
+          { conf: { year: 2014, diversityPercentage: 0.25 }, diversityPercentageChange: -0.05 }
+]
       )).toEqual({ conf: { year: 2013, diversityPercentage: 0.3 }, diversityPercentageChange: .1 });
     });
 
-    xit("can calculate the highest diversity change favouring more recent confs when change is same", function() {
+    it("can calculate the highest diversity change favouring more recent confs when change is same", function() {
       expect(helper.findHighestDiversityChange(
         [
-          { conf: { year: 2016, diversityPercentage: 0.3 }, diversityPercentageChange: 0.15 }, 
+          { conf: { year: 2014, diversityPercentage: 0.3 }, diversityPercentageChange: 0.15 }, 
           { conf: { year: 2013, diversityPercentage: 0.3 }, diversityPercentageChange: .1 }, 
-          { conf: { year: 2014, diversityPercentage: 0.25 }, diversityPercentageChange: 0.15 } ]
-      )).toEqual({ conf: { year: 2016, diversityPercentage: 0.3 }, diversityPercentageChange: .15 });
+          { conf: { year: 2016, diversityPercentage: 0.25 }, diversityPercentageChange: 0.15 }
+]
+      )).toEqual({ conf: { year: 2016, diversityPercentage: 0.25 }, diversityPercentageChange: .15 });
     });
 
     it("can group conferences by name", function() {
       expect(helper.groupConferencesByName([])).toEqual({});
-      expect(helper.groupConferencesByName([{name: "Foo"}])).toEqual({ Foo: [ { name: 'Foo' } ] });
-      expect(helper.groupConferencesByName([{name: "Foo"}, {name: "Foo"}, {name: "Bar"}])).toEqual({ Foo: [ { name: 'Foo' }, { name: 'Foo' } ], Bar: [{ name: 'Bar' }] });
+      expect(helper.groupConferencesByName([{name: "Foo"}])).toEqual({ Foo: [{ name: 'Foo' }] });
+      expect(helper.groupConferencesByName([{name: "Foo"},
+{name: "Foo"},
+{name: "Bar"}])).toEqual({ Foo: [{ name: 'Foo' },
+{ name: 'Foo' }], Bar: [{ name: 'Bar' }] });
     });
 
     it("can calculate the diversity changes over successive years", function() {
@@ -44,12 +49,14 @@ describe("The CalloutsHelper module", function() {
         [ 
           { year: 2011, diversityPercentage: 0.3 }, 
           { year: 2013, diversityPercentage: 0.4 }, 
-          { year: 2014, diversityPercentage: 0.6 } ]
+          { year: 2014, diversityPercentage: 0.6 }
+]
         )).toEqual(
           [ 
             { conf: { year: 2011, diversityPercentage: 0.3 }, diversityPercentageChange: 0 }, 
             { conf: { year: 2013, diversityPercentage: 0.4 }, diversityPercentageChange: 0.1 }, 
-            { conf: { year: 2014, diversityPercentage: 0.6 }, diversityPercentageChange: 0.2 } ]
+            { conf: { year: 2014, diversityPercentage: 0.6 }, diversityPercentageChange: 0.2 }
+]
         );
     });
 
@@ -58,68 +65,91 @@ describe("The CalloutsHelper module", function() {
         [ 
           { year: 2011, diversityPercentage: 0.3 }, 
           { year: 2013, diversityPercentage: 0.3 }, 
-          { year: 2014, diversityPercentage: 0.25 } ]
+          { year: 2014, diversityPercentage: 0.25 }
+]
         )).toEqual(
           [ 
             { conf: { year: 2011, diversityPercentage: 0.3 }, diversityPercentageChange: 0 }, 
             { conf: { year: 2013, diversityPercentage: 0.3 }, diversityPercentageChange: 0 }, 
-            { conf: { year: 2014, diversityPercentage: 0.25 }, diversityPercentageChange: -0.05 } ]
+            { conf: { year: 2014, diversityPercentage: 0.25 }, diversityPercentageChange: -0.05 }
+]
         );
     });
 
     it("can handle calculating the diversity changes over single year", function() {
       expect(helper.calculateHistoricalDiversityChanges(
-        [ 
-          { year: 2011, diversityPercentage: 0.3 } ]
+        [{ year: 2011, diversityPercentage: 0.3 }]
         )).toEqual(
-          [ 
-            { conf: { year: 2011, diversityPercentage: 0.3 }, diversityPercentageChange: 0 } ]
+          [{ conf: { year: 2011, diversityPercentage: 0.3 }, diversityPercentageChange: 0 }]
         );
     });
 
     it("can sort a group of conferences by year", function() {
-      expect(helper.sortConfGroupByYear({ Foo: [ { year: 2014 }, { year: 2011 }, { year: 2013 } ]})).toEqual([{ Foo: [ { year: 2011 }, { year: 2013 }, { year: 2014 } ]}]);
+      expect(helper.sortConfGroupByYear({ Foo: [{ year: 2014 },
+{ year: 2011 },
+{ year: 2013 }]})).toEqual([{ Foo: [{ year: 2011 },
+{ year: 2013 },
+{ year: 2014 }]}]);
     })
 
     xit("can find the most improved conference", function() {
       expect(helper.findMostImprovedConference([])).toEqual(undefined);
       expect(helper.findMostImprovedConference([{name: "Foo", diversityPercentage: .25, year: 2015}])).toEqual(undefined);
-      expect(helper.findMostImprovedConference([{name: "Foo", diversityPercentage: .25, year: 2015}, {name: "Foo", diversityPercentage: .55, year: 2016}])).toEqual({name: "Foo", diversityPercentage: .55, year: 2016});
+      expect(helper.findMostImprovedConference([{name: "Foo", diversityPercentage: .25, year: 2015},
+{name: "Foo", diversityPercentage: .55, year: 2016}])).toEqual({name: "Foo", diversityPercentage: .55, year: 2016});
 
     })
 
     it("can find all conferences with equal parity or greater", function() {
       expect(helper.findConfsAtParityOrGreater([])).toEqual([]);
       expect(helper.findConfsAtParityOrGreater([{diversityPercentage: .25}])).toEqual([]);
-      expect(helper.findConfsAtParityOrGreater([{diversityPercentage: .25}, {diversityPercentage: .55}])).toEqual([{diversityPercentage: .55}]);
-      expect(helper.findConfsAtParityOrGreater([{diversityPercentage: .25}, {diversityPercentage: .55}, {diversityPercentage: .5}])).toHaveSameItems([{diversityPercentage: .5}, {diversityPercentage: .55}], true);
+      expect(helper.findConfsAtParityOrGreater([{diversityPercentage: .25},
+{diversityPercentage: .55}])).toEqual([{diversityPercentage: .55}]);
+      expect(helper.findConfsAtParityOrGreater([{diversityPercentage: .25},
+{diversityPercentage: .55},
+{diversityPercentage: .5}])).toHaveSameItems([{diversityPercentage: .5},
+{diversityPercentage: .55}], true);
     });
 
     it("can find the most recently added conference", function() {
-      expect(helper.findMostRecentlyAddedConference([{dateAdded: 2000}, {dateAdded: 2000}])).toEqual({dateAdded: 2000});
-      expect(helper.findMostRecentlyAddedConference([{dateAdded: 2001}, {dateAdded: 2000}])).toEqual({dateAdded: 2001});
-      expect(helper.findMostRecentlyAddedConference([{dateAdded: 2001}, {dateAdded: 2002}])).toEqual({dateAdded: 2002});
+      expect(helper.findMostRecentlyAddedConference([{dateAdded: 2000},
+{dateAdded: 2000}])).toEqual({dateAdded: 2000});
+      expect(helper.findMostRecentlyAddedConference([{dateAdded: 2001},
+{dateAdded: 2000}])).toEqual({dateAdded: 2001});
+      expect(helper.findMostRecentlyAddedConference([{dateAdded: 2001},
+{dateAdded: 2002}])).toEqual({dateAdded: 2002});
       expect(helper.findMostRecentlyAddedConference([])).toEqual(undefined);
     });
 
     it("can find the best performing conference", function() {
-      expect(helper.findBestPerformingConf([{diversityPercentage: .25}, {diversityPercentage: .75}])).toEqual({diversityPercentage: .75});
-      expect(helper.findBestPerformingConf([{diversityPercentage: .75}, {diversityPercentage: .25}])).toEqual({diversityPercentage: .75});
-      expect(helper.findBestPerformingConf([{diversityPercentage: .75}, {diversityPercentage: .75}])).toEqual({diversityPercentage: .75});
+      expect(helper.findBestPerformingConf([{diversityPercentage: .25},
+{diversityPercentage: .75}])).toEqual({diversityPercentage: .75});
+      expect(helper.findBestPerformingConf([{diversityPercentage: .75},
+{diversityPercentage: .25}])).toEqual({diversityPercentage: .75});
+      expect(helper.findBestPerformingConf([{diversityPercentage: .75},
+{diversityPercentage: .75}])).toEqual({diversityPercentage: .75});
       expect(helper.findBestPerformingConf([{diversityPercentage: .25}])).toEqual({diversityPercentage: .25});
       expect(helper.findBestPerformingConf([])).toEqual(undefined);
     });
 
     it("can separate the conferences for the current year", function() {
-      expect(helper.findConfsForCurrentYear([{year: 2017}, {year: 2018}])).toEqual([{year: 2018}]);
+      expect(helper.findConfsForCurrentYear([{year: 2017},
+{year: 2018}])).toEqual([{year: 2018}]);
       expect(helper.findConfsForCurrentYear([{year: 2017}])).toEqual([]);
-      expect(helper.findConfsForCurrentYear([{year: 2017}, {name: "A", year: 2018}, {name: "B", year: 2018}])).toEqual([{name: "A", year: 2018}, {name: "B", year: 2018}]);
+      expect(helper.findConfsForCurrentYear([{year: 2017},
+{name: "A", year: 2018},
+{name: "B", year: 2018}])).toEqual([{name: "A", year: 2018},
+{name: "B", year: 2018}]);
     });
     
     it("can calculate the average diversity across a set of conferences", function() {
-      expect(helper.calculateAverageDiversity([{diversityPercentage: 0}, {diversityPercentage: 1}])).toBe(.5);
-      expect(helper.calculateAverageDiversity([{diversityPercentage: .25}, {diversityPercentage: .75}])).toBe(.5);
-      expect(helper.calculateAverageDiversity([{diversityPercentage: .2}, {diversityPercentage: .3}, {diversityPercentage: .4}])).toBe(.3);
+      expect(helper.calculateAverageDiversity([{diversityPercentage: 0},
+{diversityPercentage: 1}])).toBe(.5);
+      expect(helper.calculateAverageDiversity([{diversityPercentage: .25},
+{diversityPercentage: .75}])).toBe(.5);
+      expect(helper.calculateAverageDiversity([{diversityPercentage: .2},
+{diversityPercentage: .3},
+{diversityPercentage: .4}])).toBe(.3);
       expect(helper.calculateAverageDiversity([{diversityPercentage: 0}])).toBe(0);
     });
 

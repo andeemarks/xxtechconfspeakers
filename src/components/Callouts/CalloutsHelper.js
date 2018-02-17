@@ -25,9 +25,9 @@ class CalloutsHelper {
   }
 
   findHighestDiversityChange(confGroup) {
-    var confGroupSortedByDiversityChange = _.sortBy(confGroup, 'diversityPercentageChange');
+    var confGroupSortedByDiversityChange = _(confGroup).chain().sortBy('diversityPercentageChange').sortBy('conf.year').value();
     
-    return confGroupSortedByDiversityChange[confGroup.length - 1];
+    return _.last(confGroupSortedByDiversityChange);
   }
 
   calculateHistoricalDiversityChanges(confGroup) {
