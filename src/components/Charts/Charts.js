@@ -3,22 +3,15 @@ import s from "./Charts.css"
 import ReactSvgPieChart from "react-svg-piechart"
 import ChartsHelper from './ChartsHelper';
 
-const data = [
-  { title: "Diversity >= 50%", value: 9, color: "white" },
-  { title: "Diversity >= 40%", value: 5, color: "green" },
-  { title: "Diversity >= 30%", value: 13, color: "blue" },
-  { title: "Diversity >= 20%", value: 16, color: "orange" },
-  { title: "Diversity >= 10%", value: 16, color: "fuchsia" },
-  { title: "Diversity < 10%", value: 11, color: "red" },
-]
-
 class Charts extends React.Component {
 
   constructor(props) {
     super(props);
 
+    this.helper = new ChartsHelper();
+
     this.state = {
-      confs: props.confs
+      data: this.helper.formatDataForPieChart(props.confs)
     }
   }
 
@@ -28,7 +21,7 @@ class Charts extends React.Component {
         <div className="row">
           <div className="col-sm-2">    
         <ReactSvgPieChart
-          data={data}
+          data={this.state.data}
           viewBoxSize={100}
           strokeColor="black"
           // If you need expand on hover (or touch) effect
