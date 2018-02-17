@@ -1,6 +1,7 @@
 import React from "react"
 import s from "./Charts.css"
 import ReactSvgPieChart from "react-svg-piechart"
+import ChartsHelper from './ChartsHelper';
 
 const data = [
   { title: "Diversity >= 50%", value: 9, color: "white" },
