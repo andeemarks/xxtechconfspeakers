@@ -38,11 +38,12 @@ describe("The CalloutsHelper module", function() {
     it("can group conferences by name", function() {
       expect(helper.groupConferencesByName([])).toEqual({});
       expect(helper.groupConferencesByName([{name: "Foo"}])).toEqual({ Foo: [{ name: 'Foo' }] });
-      expect(helper.groupConferencesByName([{name: "Foo"},
-{name: "Foo"},
-{name: "Bar"}])).toEqual({ Foo: [{ name: 'Foo' },
-{ name: 'Foo' }], Bar: [{ name: 'Bar' }] });
-    });
+      expect(helper.groupConferencesByName([
+        {name: "Foo"},
+        {name: "Foo"},
+        {name: "Bar"}])).toEqual({ Foo: [{ name: 'Foo' },
+        { name: 'Foo' }], Bar: [{ name: 'Bar' }] });
+            });
 
     it("can calculate the diversity changes over successive years", function() {
       expect(helper.calculateHistoricalDiversityChanges(

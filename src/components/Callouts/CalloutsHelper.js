@@ -12,12 +12,8 @@ class CalloutsHelper {
   }
 
   diffDiversityPercentageBetweenYears(conf, index, confGroup) {
-    // console.log(confGroup);
-    // console.log(index);
-    // console.log("|", conf, "|");
     var diversityPercentageChange = 0;
     if (index < (confGroup.length - 1)) {
-      // console.log(confGroup[index + 1]);
       diversityPercentageChange = conf.diversityPercentage - confGroup[index + 1].diversityPercentage;
       diversityPercentageChange = Math.round(diversityPercentageChange * 100) / 100;
     }

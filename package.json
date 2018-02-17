@@ -6,6 +6,7 @@
   "scripts": {
     "lint": "./node_modules/.bin/eslint src/**/*.js",
     "test": "jasmine",
+    "precommit": "npm test && npm run lint",
     "start": "webpack-dev-server",
     "clean": "rm -rf dist",
     "build": "npm run clean && webpack",
