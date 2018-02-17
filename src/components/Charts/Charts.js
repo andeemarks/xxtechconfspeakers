@@ -3,12 +3,12 @@ import s from "./Charts.css"
 import ReactSvgPieChart from "react-svg-piechart"
 
 const data = [
-  { title: ">= 50%", value: 9, color: "white" },
-  { title: ">= 40%", value: 5, color: "green" },
-  { title: ">= 30%", value: 13, color: "blue" },
-  { title: ">= 20%", value: 16, color: "orange" },
-  { title: ">= 10%", value: 16, color: "fuchsia" },
-  { title: ">= 10%", value: 11, color: "red" },
+  { title: "Diversity >= 50%", value: 9, color: "white" },
+  { title: "Diversity >= 40%", value: 5, color: "green" },
+  { title: "Diversity >= 30%", value: 13, color: "blue" },
+  { title: "Diversity >= 20%", value: 16, color: "orange" },
+  { title: "Diversity >= 10%", value: 16, color: "fuchsia" },
+  { title: "Diversity < 10%", value: 11, color: "red" },
 ]
 
 class Charts extends React.Component {
@@ -25,7 +25,7 @@ class Charts extends React.Component {
     return (
       <div className={s.container}>
         <div className="row">
-          <div className="col-sm-3">      
+          <div className="col-sm-2">    
         <ReactSvgPieChart
           data={data}
           viewBoxSize={100}
@@ -41,6 +41,7 @@ class Charts extends React.Component {
             }
           }}
           ></ReactSvgPieChart>
+            <span class="label label-default"># Confs by Diversity Group</span>  
           </div>
         </div>
       </div>

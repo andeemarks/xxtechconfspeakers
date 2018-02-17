@@ -7,6 +7,7 @@ import Legend from './Legend';
 import Header from './Header';
 import Callouts from './Callouts';
 import Footer from './Footer';
+import Charts from './Charts';
 import ConfList from './ConfList';
 import confs from './confs.json';
 import confsSchema from './confs-schema.json';
@@ -52,6 +53,7 @@ export default class App extends React.Component {
             <ConfList confs={this.state.confs} />
             <br/>
             <Legend />
+            <Charts confs={this.state.confs} />
             <Footer />
           </div>
         </body>
