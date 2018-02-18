@@ -12,26 +12,21 @@ class ChartsHelper {
                 return diversityCohort;
             });
 
-        if (confs.length == 0) {
-            return [
-                { title: "0 confs >= 50%", value: 0, color: "white" },
-                { title: "0 confs >= 40%", value: 0, color: "green" },
-                { title: "0 confs >= 30%", value: 0, color: "blue" },
-                { title: "0 confs >= 20%", value: 0, color: "orange" },
-                { title: "0 confs >= 10%", value: 0, color: "fuchsia" },
-                { title: "0 confs < 10%", value: 0, color: "red" }
-            ]
-        } else {
-            return [
-                { title: confsByDiversityCohort['5'].length + " confs >= 50%", value: confsByDiversityCohort['5'].length, color: "white" },
-                { title: "Diversity >= 40%", value: confsByDiversityCohort['4'].length, color: "green" },
-                { title: "Diversity >= 30%", value: confsByDiversityCohort['3'].length, color: "blue" },
-                { title: "Diversity >= 20%", value: confsByDiversityCohort['2'].length, color: "orange" },
-                { title: "Diversity >= 10%", value: confsByDiversityCohort['1'].length, color: "fuchsia" },
-                { title: "Diversity < 10%", value: confsByDiversityCohort['0'].length, color: "red" },
-            ]
-        }
+        return [
+            this.populateCohort(confsByDiversityCohort['5'], " confs >= 50%", "white"),
+            this.populateCohort(confsByDiversityCohort['4'], " confs >= 40%", "green"),
+            this.populateCohort(confsByDiversityCohort['3'], " confs >= 30%", "blue"),
+            this.populateCohort(confsByDiversityCohort['2'], " confs >= 20%", "orange"),
+            this.populateCohort(confsByDiversityCohort['1'], " confs >= 10%", "fuchsia"),
+            this.populateCohort(confsByDiversityCohort['0'], " confs < 10%", "red")
+        ]
     };
+
+    populateCohort(groupedCohort, cohortTitle, cohortColor) {
+        var cohortSize = groupedCohort ? groupedCohort.length : 0;
+        return { title: cohortSize + cohortTitle, value: cohortSize, color: cohortColor };
+    };
+    
 }
 
 module.exports = ChartsHelper;
