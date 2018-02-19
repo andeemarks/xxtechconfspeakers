@@ -699,5 +699,16 @@
     "source": "https://rego.linux.conf.au/schedule/",
     "dateAdded": "2018-01-20",
     "Notes": ""
+  },
+  {
+    "name": "Kiwi Ruby",
+    "location": "Wellington, New Zealand",
+    "year": "2017",
+    "totalSpeakers": 10,
+    "numberOfWomen": 5,
+    "numberOfOtherGenders": 0,
+    "source": "https://kiwi.ruby.nz/speakers/",
+    "dateAdded": "2018-02-19",
+    "Notes": ""
   }
 ]
