@@ -33,7 +33,7 @@
     "recharts": "^1.0.0-beta.10"
   },
   "dependencies": {
-    "ajv": "^6.1.1",
+    "ajv": "^6.2.0",
     "ajv-cli": "^3.0.0",
     "autoprefixer-core": "^5.2.1",
     "babel-core": "^5.8.38",
