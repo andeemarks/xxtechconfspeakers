@@ -26,7 +26,7 @@
     "eslint": "^4.18.1",
     "eslint-plugin-react": "^7.5.1",
     "extract-text-webpack-plugin": "^2.1.2",
-    "jasmine": "^3.0.0",
+    "jasmine": "^3.1.0",
     "jasmine-collection-matchers": "^0.2.0",
     "mockdate": "^2.0.2",
     "react-svg-piechart": "^2.0.3",
