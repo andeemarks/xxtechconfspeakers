@@ -26,33 +26,23 @@ class Callouts extends React.Component {
     return (
       <div className={s.container}>
         <div className="row">
-          <div className="col-sm-3">
+          <div className="col-sm-2">
             <div className={s.title}>Conferences tracked</div>
             <div className={s.pop}>{this.state.numberOfConfs}</div>
           </div>
-          <div className="col-sm-3">
-            <div className={s.title}>Best performer</div>
-            <div className={s.body}><strong>{this.state.bestPerformer.name} ({this.state.bestPerformer.year})</strong><br/>{numeral(this.state.bestPerformer.diversityPercentage).format('0%')}</div>
-          </div>
-          <div className="col-sm-3">
+          <div className="col-sm-2">
             <div className={s.title}>Biggest recent improver</div>
             <div className={s.body}><strong>1st Conf</strong><br/>{"+36%"}<br/>{"2016 -> 2017"}</div>
           </div>
-          <div className="col-sm-3" id={s.nbrConfAtParity}>
-            <div className={s.title}>{"#confs >= 50% diversity"}</div>
-            <div className={s.pop}>{this.state.numberOfConfsAtParityOrGreater}</div>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-sm-3">
+          <div className="col-sm-2">
             <div className={s.title}>Average f:m%</div>
             <div className={s.pop}>{numeral(this.state.averageDiversity).format('0%')}</div>
           </div>
-          <div className="col-sm-3">
+          <div className="col-sm-2">
             <div className={s.title}>Average f:m% ({(new Date()).getFullYear()})</div>
             <div className={s.pop}>{numeral(this.state.averageDiversityCurrentYear).format('0%')}</div>
           </div>
-          <div className="col-sm-3">
+          <div className="col-sm-2">
             <div className={s.title}>Last added</div>
             <div className={s.body}><strong>{this.state.lastAdded.name} ({this.state.lastAdded.year})</strong><br />{numeral(this.state.lastAdded.diversityPercentage).format('0%')}</div>
           </div>
