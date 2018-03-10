@@ -106,14 +106,6 @@ class ConfList extends React.Component {
           width='50'
           >#m</TableHeaderColumn>
         <TableHeaderColumn
-          dataField='year'
-          tdAttr={ { 'id': `${s.confTableRow}` } }
-          dataSort={ false }
-          headerAlign='right'
-          dataAlign='right'
-          width='60'
-          >year</TableHeaderColumn>
-        <TableHeaderColumn
           dataField='location'
           dataSort={ false }
           tdAttr={ { 'id': `${s.confTableRow}` } }
