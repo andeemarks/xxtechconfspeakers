@@ -101,17 +101,6 @@ describe("The CalloutsHelper module", function() {
 
     })
 
-    it("can find all conferences with equal parity or greater", function() {
-      expect(helper.findConfsAtParityOrGreater([])).toEqual([]);
-      expect(helper.findConfsAtParityOrGreater([{diversityPercentage: .25}])).toEqual([]);
-      expect(helper.findConfsAtParityOrGreater([{diversityPercentage: .25},
-{diversityPercentage: .55}])).toEqual([{diversityPercentage: .55}]);
-      expect(helper.findConfsAtParityOrGreater([{diversityPercentage: .25},
-{diversityPercentage: .55},
-{diversityPercentage: .5}])).toHaveSameItems([{diversityPercentage: .5},
-{diversityPercentage: .55}], true);
-    });
-
     it("can find the most recently added conference", function() {
       expect(helper.findMostRecentlyAddedConference([{dateAdded: 2000},
 {dateAdded: 2000}])).toEqual({dateAdded: 2000});
@@ -120,17 +109,6 @@ describe("The CalloutsHelper module", function() {
       expect(helper.findMostRecentlyAddedConference([{dateAdded: 2001},
 {dateAdded: 2002}])).toEqual({dateAdded: 2002});
       expect(helper.findMostRecentlyAddedConference([])).toEqual(undefined);
-    });
-
-    it("can find the best performing conference", function() {
-      expect(helper.findBestPerformingConf([{diversityPercentage: .25},
-{diversityPercentage: .75}])).toEqual({diversityPercentage: .75});
-      expect(helper.findBestPerformingConf([{diversityPercentage: .75},
-{diversityPercentage: .25}])).toEqual({diversityPercentage: .75});
-      expect(helper.findBestPerformingConf([{diversityPercentage: .75},
-{diversityPercentage: .75}])).toEqual({diversityPercentage: .75});
-      expect(helper.findBestPerformingConf([{diversityPercentage: .25}])).toEqual({diversityPercentage: .25});
-      expect(helper.findBestPerformingConf([])).toEqual(undefined);
     });
 
     it("can separate the conferences for the current year", function() {
@@ -158,13 +136,6 @@ describe("The CalloutsHelper module", function() {
       expect(helper.confFromCurrentYear({year: 2000})).toBe(false);
       expect(helper.confFromCurrentYear({year: 2018})).toBe(true);
       expect(helper.confFromCurrentYear({})).toBe(false);
-    });
-    
-    it("can work out whether a conference has diversity at parity (or better)", function() {
-      expect(helper.diversityAtParityOrGreater({})).toBe(false);
-      expect(helper.diversityAtParityOrGreater({diversityPercentage: 0.49})).toBe(false);
-      expect(helper.diversityAtParityOrGreater({diversityPercentage: 0.499})).toBe(false);
-      expect(helper.diversityAtParityOrGreater({diversityPercentage: 0.5})).toBe(true);
     });
     
     it("can determine which conference has a higher diversity percentage", function() {

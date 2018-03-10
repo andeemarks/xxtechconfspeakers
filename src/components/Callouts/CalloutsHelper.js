@@ -38,10 +38,6 @@ class CalloutsHelper {
     return _.map(confGroup, this.sortByYear, this);;     
   }
 
-  diversityAtParityOrGreater(conf) {
-    return conf.diversityPercentage >= .50;
-  }
-
   confFromCurrentYear(conf) {
     return conf.year == (new Date()).getFullYear();
   }
@@ -58,16 +54,8 @@ class CalloutsHelper {
     return confs.filter(this.confFromCurrentYear);
   }
 
-  findBestPerformingConf(confs) {
-    return confs.sort(this.diversitySorter)[0];
-  }
-
   findMostRecentlyAddedConference(confs) {
     return confs.sort(this.dateAddedSorter)[0];
-  }
-
-  findConfsAtParityOrGreater(confs) {
-    return confs.filter(this.diversityAtParityOrGreater);
   }
 
   diversitySorter(confA, confB) {

@@ -13,10 +13,8 @@ class Callouts extends React.Component {
 
     this.state = {
       confs: props.confs,
-      bestPerformer: this.helper.findBestPerformingConf(props.confs),
       lastAdded: this.helper.findMostRecentlyAddedConference(props.confs),
       numberOfConfs: props.confs.length,
-      numberOfConfsAtParityOrGreater: this.helper.findConfsAtParityOrGreater(props.confs).length,
       averageDiversity: this.helper.calculateAverageDiversity(props.confs),
       averageDiversityCurrentYear: this.helper.calculateAverageDiversity(this.helper.findConfsForCurrentYear(props.confs))
     };
