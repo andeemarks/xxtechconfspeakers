@@ -49,7 +49,7 @@ class Callouts extends React.Component {
             <div className={s.pop}>{numeral(this.state.averageDiversity).format('0%')}</div>
           </div>
           <div className="col-sm-3">
-            <div className={s.title}>Average f:m% ({this.currentYear})</div>
+            <div className={s.title}>Average f:m% ({(new Date()).getFullYear()})</div>
             <div className={s.pop}>{numeral(this.state.averageDiversityCurrentYear).format('0%')}</div>
           </div>
           <div className="col-sm-3">
