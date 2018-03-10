@@ -86,25 +86,25 @@ class ConfList extends React.Component {
           dataField='name'
           tdAttr={ { 'id': `${s.confTableRow}` } }
           dataFormat={ this.helper.whoFormatter }
-          dataSort={ false }
-          width='220'
-          >who</TableHeaderColumn>
+          dataSort={ false }>
+          who
+          </TableHeaderColumn>
         <TableHeaderColumn
           dataField='numberOfWomen'
           tdAttr={ { 'id': `${s.confTableRow}` } }
           dataSort={ false }
           headerAlign='right'
-          dataAlign='right'
-          width='50'
-          >#f</TableHeaderColumn>
+          dataAlign='right'>
+          #f
+          </TableHeaderColumn>
         <TableHeaderColumn
           dataField='numberOfMen'
           tdAttr={ { 'id': `${s.confTableRow}` } }
           dataSort={ false }
           headerAlign='right'
-          dataAlign='right'
-          width='50'
-          >#m</TableHeaderColumn>
+          dataAlign='right'>
+          #m
+          </TableHeaderColumn>
         <TableHeaderColumn
           dataField='location'
           dataSort={ false }
