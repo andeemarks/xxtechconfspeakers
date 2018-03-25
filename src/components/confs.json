@@ -711,4 +711,16 @@
     "dateAdded": "2018-02-19",
     "Notes": ""
   }
+  },
+  {
+    "name": "Voxxed Days",
+    "location": "Melbourne, Australia",
+    "year": "2018",
+    "totalSpeakers": 23,
+    "numberOfWomen": 11,
+    "numberOfOtherGenders": 1,
+    "source": "https://voxxeddays.com/melbourne/speakers/",
+    "dateAdded": "2018-03-25",
+    "Notes": "At least one open transgender speaker on speaker list.  totalSpeakers doesn't include masterclass presenters"
+  }
 ]
