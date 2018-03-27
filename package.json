@@ -40,7 +40,7 @@
     "babel-loader": "^5.4.2",
     "create-react-class": "^15.6.2",
     "css-loader": "^0.28.11",
-    "ejs": "^2.3.1",
+    "ejs": "^2.5.8",
     "front-matter": "^2.3.0",
     "highlight.js": "^9.5.0",
     "json-loader": "^0.5.4",
