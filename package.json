@@ -32,7 +32,7 @@
     "mockdate": "^2.0.2",
     "react-svg-piechart": "^2.0.3",
     "recharts": "^1.0.0-beta.10",
-    "webpack-cli": "^2.0.13"
+    "webpack-cli": "^2.0.14"
   },
   "dependencies": {
     "ajv": "^6.4.0",
