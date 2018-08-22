@@ -60,6 +60,16 @@
     "Notes":""
   },
   {
+    "name":"Compose Conference",
+    "location":"Melbourne, Australia",
+    "year":"2018",
+    "totalSpeakers":16,
+    "numberOfWomen":2,
+    "source":"http://www.composeconference.org/2018-melbourne/speakers/",
+    "dateAdded": "2018-08-23",
+    "Notes":""
+  },
+  {
     "name":"1st Conf",
     "location":"Melbourne, Australia",
     "year":"2018",
