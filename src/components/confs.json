@@ -10,6 +10,16 @@
     "Notes":"Includes both workshops and talks"
   },
   {
+    "name":"API Days",
+    "location":"Melbourne, Australia",
+    "year":"2018",
+    "totalSpeakers":40,
+    "numberOfWomen":8,
+    "source":"https://apidays.com.au/",
+    "dateAdded": "2018-08-23",
+    "Notes":""
+  },
+  {
     "name":"Buzz Conf",
     "location":"Ballan, Victoria, Australia",
     "year":"2017",
